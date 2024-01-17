@@ -1,3 +1,9 @@
+---
+lab:
+    title: 'Enhance workload resiliency by using Traffic Manager and test resiliency by using Azure Chaos Studio'
+    module: 'Operate with DevOps'
+---
+
 # Lab 04 - Enhance workload resiliency by using Traffic Manager and test resiliency by using Azure Chaos Studio
 
 ## Objectives
