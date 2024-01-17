@@ -1,0 +1,228 @@
+# Lab 04 - Enhance workload resiliency by using Traffic Manager and test resiliency by using Azure Chaos Studio
+
+## Objectives
+
+In this lab, you will:
+
+- Prepare the Azure subscription for the lab
+- Enhance workload resiliency by using Traffic Manager
+- Test workload resiliency by using Azure Chaos Studio
+
+> **Note:** In the previous lab, you deployed two instances of a .NET web app into two Azure region. In this lab, you will first create a resilient configuration that implements the load balancing functionality of Azure Traffic Manager between the two web app instances. Next, you will use Azure Chaos Studio to trigger a failure of one of the apps to test the resiliency of the load balancing implementation.
+
+> **Note:** For this lab, use the same GitHub account you have been using in all previous labs.
+
+## Prerequisites
+
+- Completed Lab 01 - Agile Planning and Management using GitHub
+- Completed Lab 02 - Implement Flow of Work with GitHub
+- Completed Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep
+- An Azure subscription to which you have the Owner-level access
+
+## Exercise 0: Prepare the Azure subscription for the lab
+
+> **Note:** If you are using a new Azure subscription, some of the Azure resource providers might not be registered. Since the registration process might take a few minutes, to minimize the wait time, you will register them at the beginning of this lab.
+
+> **Note:** In this lab, you will be using Azure Chaos Studio. If this is the first time you implement Azure Chaos Studio in your subscription, you must first register the corresponding resource provider.
+
+1. Start a web browser and navigate to the Azure portal at `https://portal.azure.com`.
+1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription you used in the previous lab.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Subscriptions** and, in the list of results, select **Subscriptions**.
+1. On the subscriptions page, in the vertical menu on the left side, select **Resource providers**.
+1. In the list of resource providers, search for and select **Microsoft.Chaos**.
+1. With the **Microsoft.Chaos** resource provider selected, in the toolbar, select **Register**.
+
+   > **Note:** Don't wait until the registration complete but proceed directly to the next exercise. The registration might take a couple of minutes.
+
+## Exercise 1: Enhance workload resiliency by using Traffic Manager
+
+In this exercise, you will implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
+
+> **Note:** For the purpose of our lab, we will consider the deployment of .NET-based web app in the East US region as the primary instance. While in this case such consideration is purely arbitrary (and used for demonstration purposes only), there might be scenarios where it might be beneficial to prioritize one of the endpoints.
+
+The exercise consists of the following tasks:
+
+- Task 1: Implement a Traffic Manager profile
+- Task 2: Validate Traffic Manager functionality
+
+### Task 1: Implement a Traffic Manager profile
+
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Traffic Manager profiles** and, in the list of results, select **Traffic Manager profiles**.
+1. On the **Load balancing \| Traffic Manager** page, select **+ Create**.
+1. On the **Create Traffic Manager profile** page, perform the following actions:
+
+   - In the **Name** text box, enter **docoretmprofile04**.
+   - In the **Routing method** drop-down list, select **Priority**.
+
+   > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
+
+   - Verify that your Azure subscription appears in the **Subscription** drop-down list
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-core-04a-RG**, and then select **OK**.
+   - In the **Resource group location** drop-down list, select the same Azure region you chose in the previous labs of this course.
+
+1. Select **Create** to start the provisioning process.
+
+   > **Note:** Wait for the deployment to complete. This should complete within a minute.
+
+1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **docoretmprofile04**.
+1. On the **docoretmprofile04** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You will need it throughout this lab.
+1. On the **docoretmprofile04** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
+1. Review the content of the **docoretmprofile04 \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
+
+   > **Note:** Lowering the value of TTL will accelerate the failover time. 
+
+   > **Note:** In addition to the value of TTL, probing interval, probe timeout, and tolerated number of failures affect the amount of time that an endpoint failure is detected.
+
+1. On the **docoretmprofile04 \| Configuration** page, in the **Protocol** drop-down list, select **HTTPS** and, in the **Port** text box, enter **443**.
+
+   > **Note:** Both of the Azure App Service web apps that will be configured as endpoints are accessible via HTTPS on the default TCP port 443.
+
+1. On the **docoretmprofile04 \| Configuration** page, select **Save**.
+1. On the **docoretmprofile04** page, in the left navigation menu, in the **Settings** section, select **Endpoints**.
+1. On the **docoretmprofile04 \| Endpoints**** page, select **+ Add**.
+
+   > **Note:** You will first add an endpoint representing the Azure App Service web app.
+
+1. In the **Add endpoint** pane, perform the following actions:
+
+   - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
+   - In the **Name** text box, enter **DevOps Core web app - East US**.
+   - Ensure that the **Enable Endpoint** checkbox is selected.
+   - In the **Target resource type** drop-down list, select **App Service**.
+   - In the **Target resource** drop-down list, in the **devops-core-03b-RG** section, select the name of the App Service web app in the East US Azure region.
+   - In the **Priority** text box, enter **1**.
+
+   > **Note:** A lower priority value designates a higher precedence. In this case, all requests will be sent to the web app instance in the East US region, as long as that instance remains available.
+
+   - Ensure that the **Health Checks** are enabled.
+
+1. Select **Add**.
+
+1. Back on the **docoretmprofile04 \| Endpoints**** page, select **+ Add**.
+
+   > **Note:** Next, you will add an endpoint representing the other Azure App Service web app deployed to the West US Azure region.
+
+1. In the **Add endpoint** pane, perform the following actions:
+
+   - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
+   - In the **Name** text box, enter **DevOps Core web app - West US**.
+   - Ensure that the **Enable Endpoint** checkbox is selected.
+   - In the **Target resource type** drop-down list, select **App Service**.
+   - In the **Target resource** drop-down list, in the **devops-core-03b-RG** section, select the name of the App Service web app in the West US Azure region.
+   - In the **Priority** text box, enter **2**.
+   - Ensure that the **Health Checks** are enabled.
+
+1. Select **Add**.
+1. Back on the **docoretmprofile04 \| Endpoints**** page, verify that both endpoints are listed with the **Online** entry in the **Monitor status** column.
+
+   > **Note:** You might need to wait a couple of minutes and select **Refresh** before the status entry is up-to-date.
+
+### Task 2: Validate Traffic Manager functionality
+
+1. Start a web browser window and navigate to the DNS name associated with the Traffic Manager profile.
+1. Verify that the web browser displays the familiar page of the web site hosted by the Azure App Service web app you deployed in the previous lab.
+1. Close the newly opened web browser window.
+1. Switch over to the web browser window displaying the Azure portal.
+1. In the Azure portal, select the **Azure Cloud Shell** icon to the right of the search text box.
+1. If necessary, select **Bash** in the drop-down menu in the upper-left corner of the Cloud Shell pane.
+1. In the Bash session within the Cloud Shell pane, run the following command to resolve the DNS name of the Traffic Manager profile you created in the previous task to one of two corresponding endpoints (replace the placeholder `<tm_profile>` with the DNS name of the Traffic Manager profile, but make sure to remove the leading `https:\\`):
+
+   ```cli
+   nslookup <tm_profile>
+   ```
+
+1. Rerun the same command a few times, waiting for a bit more than 5 seconds between each invocation (to eliminate the possibility of DNS caching) and note that the output in each case references the DNS name of the web app in the East US Azure region.
+
+## Exercise 2: Test workload resiliency by using Azure Chaos Studio
+
+In this exercise, you will test workload resiliency by using Azure Chaos Studio.
+
+> **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigations proactively, rather than reactively.
+
+The exercise consists of the following tasks:
+
+- Task 1: Configure Azure Chaos Studio environment
+- Task 2: Implement an experiment
+- Task 3: Validate the experiment
+
+### Task 1: Configure Azure Chaos Studio environment
+
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
+1. On the **Chaos Studio** page, select **Targets**.
+1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **devops-core-03b-RG** resource group in the East US region you deployed in the second exercise of the previous lab.
+1. In the toolbar, select the **Enable targets** drop-down list header and, in the drop-down list select **Enable service-direct targets (All resources)**.
+1. On the **Enable service direct targets** page, ensure that the correct App Service web app instance is listed, select **Review + Enable**, and then select **Enable**.
+
+   > **Note:** Wait for the target to be enabled. This should take less than a minute.
+
+### Task 2: Implement an experiment
+
+1. In the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
+1. On the **Chaos Studio** page, select **Experiments**.
+1. On the **Experiments** page, select **+ Create** and then, in the drop-down list, select **New experiment**.
+1. On the **Basics** tab of the **Create an experiment** page, perform the following actions:
+
+   - Verify that your Azure subscription appears in the **Subscription** drop-down list.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-core-04b-RG**, and then select **OK**.
+   - In the **Experiment details** section, in the **Name** text box, enter **DevOps_Core_Labs_Experiment_04b**.
+   - In the **Region** drop-down list, select the **West US** Azure region.
+
+   > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the East US region, any region other than East US seems more appropriate.
+
+1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
+1. On the **Permissions** tab, accept the default option **System assigned managed identity** and then select **Next: Experiment designer >**.
+1. On the **Experiment designer** tab, perform the following actions:
+
+   - In the **Step** text box, enter **Step 1: Failover an App Service web app**.
+   - In the **Branch** text box, enter **Branch 1: Emulate an App Service failure**.
+   - Select **+ Add action** and, in the drop-down list, select **Add fault**.
+
+1. On the **Fault details** tab of the **Add fault** pane, in the **Faults** drop-down list, select **Stop App Service** and set the value of **Duration (minutes)** to 10.
+1. On the **Fault details** tab of the **Add fault** pane, select **Next: Target resources >**.
+1. On the **Target resources** tab of the **Add fault** pane, ensure that the option **Manually select from a list** is selected, select the App Service web app you added as a target to the Chaos Studio environment, and then select **Add**.
+1. Back on the **Experiment designer** tab of the **Create an experiment** page, select **Review + create**.
+1. On the **Review + create** tab of the **Create an experiment** page, select **Create**.
+
+   > **Note:** Wait for the experiment to be created. This should take less than a minute.
+
+   > **Note:** For the experiment to succeed, you need to also grant the newly created managed service account permissions sufficient to stop the Azure App Service web app. We will leverage for this purpose the built-in Azure Contributor role, but you could create a custom role if you want to follow the principle of least privilege.
+
+1. In the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
+1. On the **App Services** page, select the Azure App Service web app in the East US region you deployed in the second exercise of the previous lab.
+1. On the web app page, in the vertical menu on the left side, select **Access control (IAM)**.
+1. On the web app's **Access control (IAM)** page, select **+ Add** and, in the drop-down list, select **Add role assignment**.
+1. On the **Role** tab of the **Add role assignment** page, select **Privileged administrator roles**, in the list of roles, select **Contributor**, and then select **Next**.
+1. On the **Members** tab of the **Add role assignment** page, set the **Assigned access to** option to **Managed identity** and then select **+ Select Members**
+1. In the **Select managed identities** pane, in the **Managed identities** drop-down list, select **Chaos Experiment**, in the list of managed identities, select the one you created earlier in this task, and then select **Select**.
+1. Back on the **Members** tab of the **Add role assignment** page, select **Review + assign** and then again select **Review + assign**.
+
+### Task 3: Validate the experiment
+
+1. In the Azure portal, navigate back to the **Chaos Studio** page and, in the vertical menu on the left side, select **Experiments**.
+1. In the list of experiments, select **DevOps_Core_Labs_Experiment_04b**.
+1. On the **DevOps_Core_Labs_Experiment_04b** page, select **Start** and, when prompted for confirmation, select **OK**.
+1. Wait until the status of the experiment changes to **Running**.
+1. On the **DevOps_Core_Labs_Experiment_04b** page, in the **History** section, select the **Details** link in the entry representing the current experiment execution.
+1. On the **DevOps_Core_Labs_Experiment_04b** experiment details page, review the listing containing the step, branch, and action associated with the experiment.
+
+   > **Note:** You might need to select **Refresh** toolbar entry to update the status of the listing.
+
+1. Select the **Action** entry to display the **Fault details** pane.
+1. In the **Running targets** section, select the entry representing the Azure App Service web app.
+1. On the web app page, in the **Essential** section, note that the status of the web app is listed as **Stopped**.
+
+   > **Note:** Now let's verify whether Traffic Manager is successfully redirecting requests targeting its profile to the endpoint representing the App Service web app in the West US region.
+
+1. Start a web browser and navigate to the DNS name associated with the Traffic Manager profile.
+1. Verify that the web browser displays the familiar page of the web site hosted by the Azure App Service web app you deployed in the previous lab.
+1. Switch over to the web browser window displaying the Azure portal.
+1. In the Azure portal, select the **Azure Cloud Shell** icon to the right of the search text box.
+1. In the Bash session within the Cloud Shell pane, run the following command to resolve the DNS name of the Traffic Manager profile you created in the previous exercise to one of two corresponding endpoints (replace the placeholder `<tm_profile>` with the DNS name of the Traffic Manager profile, but make sure to remove the leading `https:\\`):
+
+   ```cli
+   nslookup <tm_profile>
+   ```
+
+1. Rerun the same command a few times, waiting for a bit more than 5 seconds between each invocation (to eliminate the possibility of DNS caching) and verify that the output in each case references the DNS name of the web app in the West US Azure region.
+
+> **Note:** While this example might seem a bit simplistic, the primary objective of the exercise was to illustrate the process of implementing Azure Chaos Studio-based testing and its primary components. You would use the equivalent approach if an Azure App Service web app was a part of more complex environment, where the impact of its failure might be much more challenging to predict.
