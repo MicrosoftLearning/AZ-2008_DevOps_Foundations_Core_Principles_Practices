@@ -4,7 +4,7 @@ lab:
     module: 'Develop with DevOps'
 ---
 
-# Lab 03 - Implement Flow of Work with GitHub
+# Lab 02 - Implement Flow of Work with GitHub
 
 ## Objectives
 
