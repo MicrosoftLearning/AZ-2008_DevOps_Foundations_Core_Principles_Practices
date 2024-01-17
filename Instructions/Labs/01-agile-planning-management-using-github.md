@@ -1,3 +1,9 @@
+---
+lab:
+    title: 'Agile Planning and Management using GitHub'
+    module: 'Plan with DevOps'
+---
+
 # Lab 02 - Agile Planning and Management using GitHub
 
 ## Objectives

@@ -1,3 +1,9 @@
+---
+lab:
+    title: 'Implement CI/CD with GitHub Actions and IaC with Bicep'
+    module: 'Deliver with DevOps'
+---
+
 # Lab 04 - Implement CI/CD with GitHub Actions and IaC with Bicep
 
 ## Objectives
