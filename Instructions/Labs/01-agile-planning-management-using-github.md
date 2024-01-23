@@ -195,6 +195,6 @@ The exercise consists of the following tasks:
    - The status of the item was automatically changed to **Done**, as indicated by an extra comment stating that **github-project-automation** bot moved the item from **In Progress** to **Done** in **DevOps Core Intro Project**.
    - **alpha release** milestone has been marked as complete, as indicated by the green horizontal bar in the **Milestone** section of the page.
 
-       > **Note:** In case you don't see the changes, refresh the page.
+   > **Note:** In case you don't see the changes, refresh the page.
 
 1. To verify this, navigate back to the board view of **DevOps Core Intro Project** and note that the **Repo README page is empty** item appears in the **Done** column.
