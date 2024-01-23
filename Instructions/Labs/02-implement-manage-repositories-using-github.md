@@ -16,7 +16,7 @@ In this lab, you will:
 
 ## Prerequisites
 
-- Completed Lab 01 - Agile Planning and Management using GitHub
+- Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
 
 ## Exercise 1: Implement and manage repos with GitHub
 
@@ -39,7 +39,7 @@ The exercise consists of the following tasks:
 
 1. Start a web browser and navigate to the [GitHub](https://github.com) home page.
 1. When prompted to authenticate, sign in by using your GitHub user account.
-1. Open another tab in the same browser window and navigate to the [Spoon-Knife]{https://github.com/octocat/Spoon-Knife) repo.
+1. Open another tab in the same browser window and navigate to the [Spoon-Knife](https://github.com/octocat/Spoon-Knife) repo.
 1. On the **Spoon-Knife** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **Spoon-Knife** in the **Repository name** text box, leave the **Copy the main branch only** checkbox enabled, and then select **Create fork**.
 
@@ -48,7 +48,7 @@ The exercise consists of the following tasks:
 ### Task 2: Configure a GitHub repo
 
 1. On the forked **Spoon-Knife** repo page, in the toolbar, select **Settings**.
-1. In the **General** section of the **Settings** tab, note that the default branch is set to **main*. 
+1. In the **General** section of the **Settings** tab, note that the default branch is set to **main*.
 1. Navigate to the **Features** area of the **General** section and enable the **Issues** checkbox.
 1. In the left side navigational menu, in the **Code and automation** grouping, select the **Pages** entry.
 1. In the **GitHub Pages** pane, in the Branch section, change the **None** entry in the drop-down list to **main** and then select **Save**.
@@ -74,7 +74,7 @@ The exercise consists of the following tasks:
 1. In the current pane, in the Assignees section, select **Add assignees…**, and, in the **Suggestions** section, select your GitHub user name.
 1. Select the gear icon next to the **Labels** entry and, in the drop-down list, select **enhancement**.
 1. Select the gear icon next to the **Projects** entry and, in the drop-down list, select **DevOps Core Intro Project**.
-1. Select **Submit new issue**. 
+1. Select **Submit new issue**.
 1. On the **index.html looks rather austere** pane, in the **Projects** section, set **Status** to **In Progress**.
 1. On the forked **Spoon-Knife** page, select the **Projects** tab.
 1. On the **Welcome to the all-new projects** page, select **DevOps Core Intro Project**.
