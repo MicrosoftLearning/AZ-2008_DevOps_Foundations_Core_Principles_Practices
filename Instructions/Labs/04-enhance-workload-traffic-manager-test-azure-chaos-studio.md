@@ -20,9 +20,9 @@ In this lab, you will:
 
 ## Prerequisites
 
-- Completed Lab 01 - Agile Planning and Management using GitHub
-- Completed Lab 02 - Implement Flow of Work with GitHub
-- Completed Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep
+- Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
+- Completed [Lab 02 - Implement Flow of Work with GitHub](02-implement-manage-repositories-using-github.md)
+- Completed [Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep](03-implement-ci-cd-with-github-actions-and-iac-with-bicep.md)
 - An Azure subscription to which you have the Owner-level access
 
 ## Exercise 0: Prepare the Azure subscription for the lab
@@ -143,7 +143,7 @@ The exercise consists of the following tasks:
 
 In this exercise, you will test workload resiliency by using Azure Chaos Studio.
 
-> **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigations proactively, rather than reactively.
+> **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigation proactively, rather than reactively.
 
 The exercise consists of the following tasks:
 

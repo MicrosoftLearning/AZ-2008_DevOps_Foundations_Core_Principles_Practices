@@ -20,9 +20,9 @@ In this lab, you will:
 
 ## Prerequisites
 
-- Completed Lab 01 - Agile Planning and Management using GitHub
-- Completed Lab 02 - Implement Flow of Work with GitHub
-- An Azure subscription to which you have at least the Contributor-level access
+- Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
+- Completed [Lab 02 - Implement Flow of Work with GitHub](02-implement-manage-repositories-using-github.md)
+- An Azure subscription to which you have at least the Contributor-level access. If you do not have an Azure subscription, you can sign up for a [free trial](https://azure.microsoft.com/free).
 
 ## Exercise 0: Prepare the Azure subscription for the lab
 
@@ -31,8 +31,9 @@ In this lab, you will:
 > **Note:** In this lab, you will be using Azure Cloud Shell. If this is the first time you are using Azure Cloud Shell in your subscription, you will need to register the corresponding resource provider. 
 
 1. Start a web browser and navigate to the Azure portal at `https://portal.azure.com`.
-1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription you used in the previous lab.
+1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription available to you.
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Subscriptions** and, in the list of results, select **Subscriptions**.
+1. On the **Subscriptions** page, select the subscription you want to use in this lab.
 1. On the subscriptions page, in the vertical menu on the left side, select **Resource providers**.
 1. In the list of resource providers, search for and select **Microsoft.CloudShell**.
 1. With the **Microsoft.CloudShell** resource provider selected, in the toolbar, select **Register**.
@@ -54,13 +55,13 @@ The exercise consists of the following tasks:
 ### Task 1: Fork a GitHub repo containing the source code of a web app
 
 1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
-1. Open another tab in the same browser window and navigate to the [Spoon-Knife.NET]{https://github.com/aaduser1/Spoon-Knife.NET) repo, which hosts the .NET version of the same web site you implemented in the previous lab.
+1. Open another tab in the same browser window and navigate to the [Spoon-Knife.NET](https://github.com/aaduser1/Spoon-Knife.NET) repo, which hosts the .NET version of the same web site you implemented in the previous lab.
 1. On the **Spoon-Knife.NET** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **Spoon-Knife.NET** in the **Repository name** text box, leave the **Copy the main branch only** checkbox enabled, and then select **Create fork**.
 
    > **Note:** Your browser session will be automatically redirected to the newly forked repo.
 
-### Task 2: Create and configure an Azure App Service web app 
+### Task 2: Create and configure an Azure App Service web app
 
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
 1. In the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
@@ -75,6 +76,7 @@ The exercise consists of the following tasks:
    - Leave the **Operating System** option set to **Windows**.
    - In the **Region** drop-down list, select an Azure region close to your location.
    - In the **Pricing plans** section, accept the default pricing plan name, location (which is determined by your choice of the region), and the pricing plan.
+   - In the **Zone redundancy** drop-down list, select **Disable**.
 
 1. Back on the **Basics** tab of the **Create Web App** page, select **Next: Database >**.
 1. On the **Database** tab of the **Create Web App** page, select **Next: Deployment**.
@@ -195,7 +197,7 @@ The exercise consists of the following tasks:
 
 1. Select the **Pull requests** tab.
 1. On the **Pull requests** tab, select **Compare & pull request**.
-1. On the **Open a pull request** page, in the **Choose a Base Repository** drop-down list, select the name of the forked repository you created at the beginning of this lab. 
+1. On the **Open a pull request** page, in the **Choose a Base Repository** drop-down list, select the name of the forked repository you created at the beginning of this lab.
 
    > **Note:** The name will start with your GitHub name, followed by a forward slash, followed by **Spoon-Knife**. Once you select it, the entry should change to **base: main**.
 
@@ -224,7 +226,7 @@ The exercise consists of the following tasks:
 ### Task 1: Fork and review the GitHub repo containing the source code of a web app, a GitHub Actions workflow, and a Bicep template
 
 1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
-1. Open another tab in the same browser window and navigate to the [Spoon-Knife.Multi]{https://github.com/polichtm/Spoon-Knife.Multi) repo, which hosts the .NET version of the same web site you implemented in the previous exercise of this lab, a GitHub Actions workflow, and a Bicep template (as well as a Bicep template parameters file).
+1. Open another tab in the same browser window and navigate to the [Spoon-Knife.Multi](https://github.com/polichtm/Spoon-Knife.Multi) repo, which hosts the .NET version of the same web site you implemented in the previous exercise of this lab, a GitHub Actions workflow, and a Bicep template (as well as a Bicep template parameters file).
 1. On the **Spoon-Knife.Multi** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **Spoon-Knife.Multi** in the **Repository name** text box, leave the **Copy the main branch only** checkbox enabled, and then select **Create fork**.
 
