@@ -58,6 +58,9 @@ The exercise consists of the following tasks:
 1. On the **Create Traffic Manager profile** page, perform the following actions:
 
    - In the **Name** text box, enter **docoretmprofile04**.
+
+       > **Note:** The name of the Traffic Manager profile must be globally unique. If you receive an error message indicating that the name is already in use, try a different name and make sure to record it. You will need it throughout this lab.
+
    - In the **Routing method** drop-down list, select **Priority**.
 
    > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
@@ -176,7 +179,7 @@ The exercise consists of the following tasks:
    > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the East US region, any region other than East US seems more appropriate.
 
 1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
-1. On the **Permissions** tab, accept the default option **System assigned managed identity** and then select **Next: Experiment designer >**.
+1. On the **Permissions** tab, accept the default option **System assigned identity** and then select **Next: Experiment designer >**.
 1. On the **Experiment designer** tab, perform the following actions:
 
    - In the **Step** text box, enter **Step 1: Failover an App Service web app**.
@@ -216,6 +219,8 @@ The exercise consists of the following tasks:
 1. Select the **Action** entry to display the **Fault details** pane.
 1. In the **Running targets** section, select the entry representing the Azure App Service web app.
 1. On the web app page, in the **Essential** section, note that the status of the web app is listed as **Stopped**.
+
+   > **Note:** You might need to select **Refresh** toolbar entry to update the status of the Web App.
 
    > **Note:** Now let's verify whether Traffic Manager is successfully redirecting requests targeting its profile to the endpoint representing the App Service web app in the West US region.
 
