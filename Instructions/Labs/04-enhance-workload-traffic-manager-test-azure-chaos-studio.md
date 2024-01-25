@@ -20,9 +20,9 @@ In this lab, you will:
 
 ## Prerequisites
 
-- Completed Lab 01 - Agile Planning and Management using GitHub
-- Completed Lab 02 - Implement Flow of Work with GitHub
-- Completed Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep
+- Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
+- Completed [Lab 02 - Implement Flow of Work with GitHub](02-implement-manage-repositories-using-github.md)
+- Completed [Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep](03-implement-ci-cd-with-github-actions-and-iac-with-bicep.md)
 - An Azure subscription to which you have the Owner-level access
 
 ## Exercise 0: Prepare the Azure subscription for the lab
@@ -58,6 +58,9 @@ The exercise consists of the following tasks:
 1. On the **Create Traffic Manager profile** page, perform the following actions:
 
    - In the **Name** text box, enter **docoretmprofile04**.
+
+       > **Note:** The name of the Traffic Manager profile must be globally unique. If you receive an error message indicating that the name is already in use, try a different name and make sure to record it. You will need it throughout this lab.
+
    - In the **Routing method** drop-down list, select **Priority**.
 
    > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
@@ -143,7 +146,7 @@ The exercise consists of the following tasks:
 
 In this exercise, you will test workload resiliency by using Azure Chaos Studio.
 
-> **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigations proactively, rather than reactively.
+> **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigation proactively, rather than reactively.
 
 The exercise consists of the following tasks:
 
@@ -176,7 +179,7 @@ The exercise consists of the following tasks:
    > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the East US region, any region other than East US seems more appropriate.
 
 1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
-1. On the **Permissions** tab, accept the default option **System assigned managed identity** and then select **Next: Experiment designer >**.
+1. On the **Permissions** tab, accept the default option **System assigned identity** and then select **Next: Experiment designer >**.
 1. On the **Experiment designer** tab, perform the following actions:
 
    - In the **Step** text box, enter **Step 1: Failover an App Service web app**.
@@ -216,6 +219,8 @@ The exercise consists of the following tasks:
 1. Select the **Action** entry to display the **Fault details** pane.
 1. In the **Running targets** section, select the entry representing the Azure App Service web app.
 1. On the web app page, in the **Essential** section, note that the status of the web app is listed as **Stopped**.
+
+   > **Note:** You might need to select **Refresh** toolbar entry to update the status of the Web App.
 
    > **Note:** Now let's verify whether Traffic Manager is successfully redirecting requests targeting its profile to the endpoint representing the App Service web app in the West US region.
 

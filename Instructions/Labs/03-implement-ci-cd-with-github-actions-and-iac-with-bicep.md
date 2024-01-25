@@ -20,9 +20,9 @@ In this lab, you will:
 
 ## Prerequisites
 
-- Completed Lab 01 - Agile Planning and Management using GitHub
-- Completed Lab 02 - Implement Flow of Work with GitHub
-- An Azure subscription to which you have at least the Contributor-level access
+- Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
+- Completed [Lab 02 - Implement Flow of Work with GitHub](02-implement-manage-repositories-using-github.md)
+- An Azure subscription to which you have at least the Contributor-level access. If you do not have an Azure subscription, you can sign up for a [free trial](https://azure.microsoft.com/free).
 
 ## Exercise 0: Prepare the Azure subscription for the lab
 
@@ -31,8 +31,9 @@ In this lab, you will:
 > **Note:** In this lab, you will be using Azure Cloud Shell. If this is the first time you are using Azure Cloud Shell in your subscription, you will need to register the corresponding resource provider. 
 
 1. Start a web browser and navigate to the Azure portal at `https://portal.azure.com`.
-1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription you used in the previous lab.
+1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription available to you.
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Subscriptions** and, in the list of results, select **Subscriptions**.
+1. On the **Subscriptions** page, select the subscription you want to use in this lab.
 1. On the subscriptions page, in the vertical menu on the left side, select **Resource providers**.
 1. In the list of resource providers, search for and select **Microsoft.CloudShell**.
 1. With the **Microsoft.CloudShell** resource provider selected, in the toolbar, select **Register**.
@@ -54,13 +55,13 @@ The exercise consists of the following tasks:
 ### Task 1: Fork a GitHub repo containing the source code of a web app
 
 1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
-1. Open another tab in the same browser window and navigate to the [Spoon-Knife.NET]{https://github.com/aaduser1/Spoon-Knife.NET) repo, which hosts the .NET version of the same web site you implemented in the previous lab.
+1. Open another tab in the same browser window and navigate to the [Spoon-Knife.NET](https://github.com/aaduser1/Spoon-Knife.NET) repo, which hosts the .NET version of the same web site you implemented in the previous lab.
 1. On the **Spoon-Knife.NET** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **Spoon-Knife.NET** in the **Repository name** text box, leave the **Copy the main branch only** checkbox enabled, and then select **Create fork**.
 
    > **Note:** Your browser session will be automatically redirected to the newly forked repo.
 
-### Task 2: Create and configure an Azure App Service web app 
+### Task 2: Create and configure an Azure App Service web app
 
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
 1. In the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
@@ -75,6 +76,7 @@ The exercise consists of the following tasks:
    - Leave the **Operating System** option set to **Windows**.
    - In the **Region** drop-down list, select an Azure region close to your location.
    - In the **Pricing plans** section, accept the default pricing plan name, location (which is determined by your choice of the region), and the pricing plan.
+   - In the **Zone redundancy** drop-down list, select **Disable**.
 
 1. Back on the **Basics** tab of the **Create Web App** page, select **Next: Database >**.
 1. On the **Database** tab of the **Create Web App** page, select **Next: Deployment**.
@@ -195,7 +197,7 @@ The exercise consists of the following tasks:
 
 1. Select the **Pull requests** tab.
 1. On the **Pull requests** tab, select **Compare & pull request**.
-1. On the **Open a pull request** page, in the **Choose a Base Repository** drop-down list, select the name of the forked repository you created at the beginning of this lab. 
+1. On the **Open a pull request** page, in the **Choose a Base Repository** drop-down list, select the name of the forked repository you created at the beginning of this lab.
 
    > **Note:** The name will start with your GitHub name, followed by a forward slash, followed by **Spoon-Knife**. Once you select it, the entry should change to **base: main**.
 
@@ -224,7 +226,7 @@ The exercise consists of the following tasks:
 ### Task 1: Fork and review the GitHub repo containing the source code of a web app, a GitHub Actions workflow, and a Bicep template
 
 1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
-1. Open another tab in the same browser window and navigate to the [Spoon-Knife.Multi]{https://github.com/polichtm/Spoon-Knife.Multi) repo, which hosts the .NET version of the same web site you implemented in the previous exercise of this lab, a GitHub Actions workflow, and a Bicep template (as well as a Bicep template parameters file).
+1. Open another tab in the same browser window and navigate to the [Spoon-Knife.Multi](https://github.com/polichtm/Spoon-Knife.Multi) repo, which hosts the .NET version of the same web site you implemented in the previous exercise of this lab, a GitHub Actions workflow, and a Bicep template (as well as a Bicep template parameters file).
 1. On the **Spoon-Knife.Multi** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **Spoon-Knife.Multi** in the **Repository name** text box, leave the **Copy the main branch only** checkbox enabled, and then select **Create fork**.
 
@@ -275,16 +277,16 @@ The exercise consists of the following tasks:
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
 1. In the Azure portal, in the search text box at the top of the page, enter **Resource groups** and select **Resource groups** in the list of results.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **devops-core-03b-RG**. Then select **Create resource group**.
+1. In the **Resource groups** text box, enter **devops-core-03b-RG**.
 1. In the **Region** drop-down list, select the same Azure region that was used in the previous exercise.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 
-> **Note:** Next, you will create a security principal that will be used to authenticate from the GitHub Actions workflow to the target Azure subscription and assign to it the role of Contributor in the scope of the newly created resource group.
+    > **Note:** Next, you will create a service principal that will be used to authenticate from the GitHub Actions workflow to the target Azure subscription and assign to it the role of Contributor in the scope of the newly created resource group.
 
 1. In the Azure portal, select the **Cloud Shell** icon to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select **Create storage** and wait for the storage mount to complete.
+    > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select **Create storage** and wait for the storage mount to complete.
 
 1. If necessary, select **Bash** in the drop-down menu in the upper-left corner of the Cloud Shell pane.
 1. In the Bash session within the Cloud Shell pane, run the following command to store the value of your Azure subscription ID in a variable:
@@ -293,7 +295,7 @@ The exercise consists of the following tasks:
    SUBCRIPTION_ID=$(az account show --query id --output tsv) 
    ```
 
-1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID security principal and assign to it the role of Contributor in the scope of the resource group **devops-core-03b-RG**:
+1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the resource group **devops-core-03b-RG**:
 
    ```cli
    az ad sp create-for-rbac --name "docorewebapp03b" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID/resourceGroups/devops-core-03b-RG --json-auth
@@ -326,12 +328,11 @@ The exercise consists of the following tasks:
 ### Task 3: Validate the IaC and CI/CD functionality
 
 1. In the web browser window displaying the forked **Spoon-Knife.Multi** GitHub repo page, select **Actions**.
-1. In the **All workflows** section on the left side, select **Build, provision, and deploy .NET app to Azure App Service web app**.
-1. In the **Build, provision, and deploy .NET app to Azure App Service web app** pane, note the message indicating that workflows are not being run on this forked repository.
+1. If you are prompted to enable GitHub Actions, select **I understand my workflows, go ahead and enable them**.
 
     >**Note**: This is expected, since, by default GitHub will disable workflows in a forked repo for your own protection.
 
-1. Select **I understand my workflows, go ahead and enable them**.
+1. In the **All workflows** section on the left side, select **Build, provision, and deploy .NET app to Azure App Service web app**.
 1. In the upper-right corner of the **Build, provision, and deploy .NET app to Azure App Service web app** pane, select **Run workflow**, verify that **Branch: main** appears in the **Use workflow from** drop-down list, and select **Run workflow** again.
 
     >**Note**: This should trigger a workflow run.
