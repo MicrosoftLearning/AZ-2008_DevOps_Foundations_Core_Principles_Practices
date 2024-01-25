@@ -277,16 +277,16 @@ The exercise consists of the following tasks:
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
 1. In the Azure portal, in the search text box at the top of the page, enter **Resource groups** and select **Resource groups** in the list of results.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **devops-core-03b-RG**. Then select **Create resource group**.
+1. In the **Resource groups** text box, enter **devops-core-03b-RG**.
 1. In the **Region** drop-down list, select the same Azure region that was used in the previous exercise.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 
-> **Note:** Next, you will create a security principal that will be used to authenticate from the GitHub Actions workflow to the target Azure subscription and assign to it the role of Contributor in the scope of the newly created resource group.
+    > **Note:** Next, you will create a service principal that will be used to authenticate from the GitHub Actions workflow to the target Azure subscription and assign to it the role of Contributor in the scope of the newly created resource group.
 
 1. In the Azure portal, select the **Cloud Shell** icon to the right of the search text box.
 1. If prompted to select either **Bash** or **PowerShell**, select **Bash**.
 
-    >**Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select **Create storage** and wait for the storage mount to complete.
+    > **Note**: If this is the first time you are starting **Cloud Shell** and you are presented with the **You have no storage mounted** message, select **Create storage** and wait for the storage mount to complete.
 
 1. If necessary, select **Bash** in the drop-down menu in the upper-left corner of the Cloud Shell pane.
 1. In the Bash session within the Cloud Shell pane, run the following command to store the value of your Azure subscription ID in a variable:
@@ -295,7 +295,7 @@ The exercise consists of the following tasks:
    SUBCRIPTION_ID=$(az account show --query id --output tsv) 
    ```
 
-1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID security principal and assign to it the role of Contributor in the scope of the resource group **devops-core-03b-RG**:
+1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the resource group **devops-core-03b-RG**:
 
    ```cli
    az ad sp create-for-rbac --name "docorewebapp03b" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID/resourceGroups/devops-core-03b-RG --json-auth
@@ -328,12 +328,11 @@ The exercise consists of the following tasks:
 ### Task 3: Validate the IaC and CI/CD functionality
 
 1. In the web browser window displaying the forked **Spoon-Knife.Multi** GitHub repo page, select **Actions**.
-1. In the **All workflows** section on the left side, select **Build, provision, and deploy .NET app to Azure App Service web app**.
-1. In the **Build, provision, and deploy .NET app to Azure App Service web app** pane, note the message indicating that workflows are not being run on this forked repository.
+1. If you are prompted to enable GitHub Actions, select **I understand my workflows, go ahead and enable them**.
 
     >**Note**: This is expected, since, by default GitHub will disable workflows in a forked repo for your own protection.
 
-1. Select **I understand my workflows, go ahead and enable them**.
+1. In the **All workflows** section on the left side, select **Build, provision, and deploy .NET app to Azure App Service web app**.
 1. In the upper-right corner of the **Build, provision, and deploy .NET app to Azure App Service web app** pane, select **Run workflow**, verify that **Branch: main** appears in the **Use workflow from** drop-down list, and select **Run workflow** again.
 
     >**Note**: This should trigger a workflow run.
