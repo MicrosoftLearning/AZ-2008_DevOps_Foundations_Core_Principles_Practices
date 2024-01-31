@@ -6,6 +6,8 @@ lab:
 
 # Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep
 
+## Estimated timing: 30 minutes
+
 ## Objectives
 
 In this lab, you will:

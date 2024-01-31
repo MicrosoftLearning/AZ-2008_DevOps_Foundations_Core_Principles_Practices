@@ -6,6 +6,8 @@ lab:
 
 # Lab 04 - Enhance workload resiliency by using Traffic Manager and test resiliency by using Azure Chaos Studio
 
+## Estimated timing: 35 minutes
+
 ## Objectives
 
 In this lab, you will:

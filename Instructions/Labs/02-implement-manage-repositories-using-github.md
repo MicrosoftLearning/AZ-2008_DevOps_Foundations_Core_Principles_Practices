@@ -6,6 +6,8 @@ lab:
 
 # Lab 02 - Implement Flow of Work with GitHub
 
+## Estimated timing: 30 minutes
+
 ## Objectives
 
 In this lab, you will:
