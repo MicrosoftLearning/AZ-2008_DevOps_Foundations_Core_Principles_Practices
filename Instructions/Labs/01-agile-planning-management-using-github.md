@@ -6,6 +6,8 @@ lab:
 
 # Lab 01 - Agile Planning and Management using GitHub
 
+## Estimated timing: 40 minutes
+
 ## Objectives
 
 In this lab, you will:
