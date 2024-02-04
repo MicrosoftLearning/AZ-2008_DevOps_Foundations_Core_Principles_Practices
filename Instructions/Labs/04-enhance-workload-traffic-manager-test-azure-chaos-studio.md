@@ -100,7 +100,7 @@ The exercise consists of the following tasks:
    - In the **Name** text box, enter **DevOps Core web app - East US**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
-   - In the **Target resource** drop-down list, in the **devops-core-03b-RG** section, select the name of the App Service web app in the East US Azure region.
+   - In the **Target resource** drop-down list, in the **rg-az400-eshoponweb-eastus** section, select the name of the App Service web app in the East US Azure region.
    - In the **Priority** text box, enter **1**.
 
    > **Note:** A lower priority value designates a higher precedence. In this case, all requests will be sent to the web app instance in the East US region, as long as that instance remains available.
@@ -111,15 +111,15 @@ The exercise consists of the following tasks:
 
 1. Back on the **docoretmprofile04 \| Endpoints**** page, select **+ Add**.
 
-   > **Note:** Next, you will add an endpoint representing the other Azure App Service web app deployed to the West US Azure region.
+   > **Note:** Next, you will add an endpoint representing the other Azure App Service web app deployed to the West Europe Azure region.
 
 1. In the **Add endpoint** pane, perform the following actions:
 
    - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
-   - In the **Name** text box, enter **DevOps Core web app - West US**.
+   - In the **Name** text box, enter **DevOps Core web app - West Europe**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
-   - In the **Target resource** drop-down list, in the **devops-core-03b-RG** section, select the name of the App Service web app in the West US Azure region.
+   - In the **Target resource** drop-down list, in the **rg-az400-eshoponweb-westeurope** section, select the name of the App Service web app in the West Europe Azure region.
    - In the **Priority** text box, enter **2**.
    - Ensure that the **Health Checks** are enabled.
 
@@ -160,7 +160,7 @@ The exercise consists of the following tasks:
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
 1. On the **Chaos Studio** page, select **Targets**.
-1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **devops-core-03b-RG** resource group in the East US region you deployed in the second exercise of the previous lab.
+1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **rg-az400-eshoponweb-eastus** resource group in the East US region you deployed in the previous lab.
 1. In the toolbar, select the **Enable targets** drop-down list header and, in the drop-down list select **Enable service-direct targets (All resources)**.
 1. On the **Enable service direct targets** page, ensure that the correct App Service web app instance is listed, select **Review + Enable**, and then select **Enable**.
 
@@ -176,9 +176,9 @@ The exercise consists of the following tasks:
    - Verify that your Azure subscription appears in the **Subscription** drop-down list.
    - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-core-04b-RG**, and then select **OK**.
    - In the **Experiment details** section, in the **Name** text box, enter **DevOps_Core_Labs_Experiment_04b**.
-   - In the **Region** drop-down list, select the **West US** Azure region.
+   - In the **Region** drop-down list, select the **West Europe** Azure region.
 
-   > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the East US region, any region other than East US seems more appropriate.
+   > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the West Europe region, any region other than East US seems more appropriate.
 
 1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
 1. On the **Permissions** tab, accept the default option **System assigned identity** and then select **Next: Experiment designer >**.
@@ -199,7 +199,7 @@ The exercise consists of the following tasks:
    > **Note:** For the experiment to succeed, you need to also grant the newly created managed service account permissions sufficient to stop the Azure App Service web app. We will leverage for this purpose the built-in Azure Contributor role, but you could create a custom role if you want to follow the principle of least privilege.
 
 1. In the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
-1. On the **App Services** page, select the Azure App Service web app in the East US region you deployed in the second exercise of the previous lab.
+1. On the **App Services** page, select the Azure App Service web app in the East US region you deployed in the previous lab.
 1. On the web app page, in the vertical menu on the left side, select **Access control (IAM)**.
 1. On the web app's **Access control (IAM)** page, select **+ Add** and, in the drop-down list, select **Add role assignment**.
 1. On the **Role** tab of the **Add role assignment** page, select **Privileged administrator roles**, in the list of roles, select **Contributor**, and then select **Next**.
@@ -224,7 +224,7 @@ The exercise consists of the following tasks:
 
    > **Note:** You might need to select **Refresh** toolbar entry to update the status of the Web App.
 
-   > **Note:** Now let's verify whether Traffic Manager is successfully redirecting requests targeting its profile to the endpoint representing the App Service web app in the West US region.
+   > **Note:** Now let's verify whether Traffic Manager is successfully redirecting requests targeting its profile to the endpoint representing the App Service web app in the West Europe region.
 
 1. Start a web browser and navigate to the DNS name associated with the Traffic Manager profile.
 1. Verify that the web browser displays the familiar page of the web site hosted by the Azure App Service web app you deployed in the previous lab.
@@ -236,6 +236,6 @@ The exercise consists of the following tasks:
    nslookup <tm_profile>
    ```
 
-1. Rerun the same command a few times, waiting for a bit more than 5 seconds between each invocation (to eliminate the possibility of DNS caching) and verify that the output in each case references the DNS name of the web app in the West US Azure region.
+1. Rerun the same command a few times, waiting for a bit more than 5 seconds between each invocation (to eliminate the possibility of DNS caching) and verify that the output in each case references the DNS name of the web app in the West Europe Azure region.
 
 > **Note:** While this example might seem a bit simplistic, the primary objective of the exercise was to illustrate the process of implementing Azure Chaos Studio-based testing and its primary components. You would use the equivalent approach if an Azure App Service web app was a part of more complex environment, where the impact of its failure might be much more challenging to predict.
