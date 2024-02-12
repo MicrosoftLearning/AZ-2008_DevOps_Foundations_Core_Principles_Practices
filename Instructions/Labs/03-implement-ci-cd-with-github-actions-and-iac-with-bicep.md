@@ -56,17 +56,17 @@ The exercise consists of the following tasks:
 ### Task 1: Fork and review the GitHub repo containing the source code of a web app, a GitHub Actions workflow, and a Bicep template
 
 1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
-1. Open another tab in the same browser window and navigate to the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb/blob/main/.github/workflows/eshoponweb-cicd.yml) repo, which hosts the .NET version of a sample web site, a GitHub Actions workflow, and a Bicep template.
+1. Open another tab in the same browser window and navigate to the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repo, which hosts the .NET version of a sample web site, a GitHub Actions workflow, and a Bicep template.
 1. On the **eShopOnWeb** repo page, select **Fork**.
-1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **eShopOnWeb** in the **Repository name** text box, clear the **Copy the main branch only** checkbox, and then select **Create fork**.
+1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **eShopOnWeb** in the **Repository name** text box, and confirm the **Copy the main branch only** checkbox is checked, and then select **Create fork**.
 
    > **Note:** Your browser session will be automatically redirected to the newly forked repo.
 
-1. On the **eShopOnWeb** page, in the drop-down list displaying the current branch **main**, select the **project-update-and-adds** branch.
+1. On the **eShopOnWeb** page, confirm the drop-down list displays the current branch **main**.
 1. Review the repo structure and note that it includes the following components:
 
    - the **.github/workflows** directory containing several YAML-based workflow, including one named **eshoponweb-cicd.yml**
-   - the **.azure/bicep** directory containing the Bicep template named **webapp.bicep**
+   - the **infra** directory containing the Bicep template named **webapp.bicep**
    - the **src/Web** directory containing the .NET code of the source web app
 
 1. Open the **.github/workflows** directory and then select the **eshoponweb-cicd.yml** file to view its content. Note that this GitHub Actions workflow contains the **buildandtest** and **deploy** jobs, which consists of the following steps:
@@ -103,11 +103,11 @@ The exercise consists of the following tasks:
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
 1. In the Azure portal, in the search text box at the top of the page, enter **Resource groups** and select **Resource groups** in the list of results.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **rg-az400-eshoponweb-westeurope**.
+1. In the **Resource groups** text box, enter **rg-eshoponweb-westeurope**.
 1. In the **Region** drop-down list, select **(Europe) West Europe**.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **rg-az400-eshoponweb-eastus**.
+1. In the **Resource groups** text box, enter **rg-eshoponweb-eastus**.
 1. In the **Region** drop-down list, select **(US) East US**.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 
@@ -126,7 +126,7 @@ The exercise consists of the following tasks:
 1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the subscription:
 
    ```cli
-   az ad sp create-for-rbac --name "docorewebapp03" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
+   az ad sp create-for-rbac --name "devopsfoundationslab" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
    ```
 
 1. Copy the entire JSON-formatted output of the command and record it. You will need it shortly. The output should have the format that resembles the following text:
@@ -154,27 +154,27 @@ The exercise consists of the following tasks:
 1. Switch back to the web browser displaying the Bash session within the Cloud Shell pane and run the following command to generate the name of the first App Service web app you will be deploying:
 
    ```cli
-   echo az400-webapp-westeurope-$RANDOM$RANDOM
+   echo devops-webapp-westeurope-$RANDOM$RANDOM
    ```
 
 1. Copy the value returned by the command and record it. You will use it later in this exercise.
 1. In the Bash session within the Cloud Shell pane, run the following command to generate the name of the second App Service web app you will be deploying:
 
    ```cli
-   echo az400-webapp-eastus-$RANDOM$RANDOM
+   echo devops-webapp-eastus-$RANDOM$RANDOM
    ```
 
 1. Copy the value returned by the command and record it. You will use it later in this exercise.
 
 ### Task 3: Validate the IaC and CI/CD functionality
 
-1. Switch to the web browser window displaying the forked **eShopOnWeb** GitHub repo page and, if needed, on the **eShopOnWeb** page, in the drop-down list displaying the current branch **main**, select the **project-update-and-adds** branch.
-1. In the web browser window displaying the **project-update-and-adds** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **.github/workflows** folder and select **eshoponweb-cicd.yml**.
+1. Switch to the web browser window displaying the forked **eShopOnWeb** GitHub repo page and, if needed, on the **eShopOnWeb** page, click in the **Code** tab and, in the drop-down list confirm that the current branch is **main**.
+1. In the web browser window displaying the **main** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **.github/workflows** folder and select **eshoponweb-cicd.yml**.
 1. In the **.github/workflows/eshoponweb-cicd.yml** pane, select the pencil icon to edit the workflow.
 1. In the **Edit** pane, replace line 4 with the following text:
 
    ```yaml
-   on: workflow_dispatch:
+   on: workflow_dispatch
    ```
 
     >**Note**: Ensure that you use proper indentation.
@@ -182,58 +182,67 @@ The exercise consists of the following tasks:
 1. In the **Edit** pane, replace line 8 with the following text:
 
    ```yaml
-    RESOURCE-GROUP: rg-az400-eshoponweb-westeurope
+    RESOURCE-GROUP: rg-eshoponweb-westeurope
    ```
 
 1. In the **Edit** pane, replace the `YOUR-SUBS-ID` placeholder in line 11 with the value of the Azure subscription ID you recorded earlier in this exercise:
-1. In the **Edit** pane, replace the `az400-webapp-NAME` placeholder in line 11 with the name of the first Azure App Service web app you generated earlier in this exercise:
+1. In the **Edit** pane, replace the `eshoponweb-webapp-NAME` placeholder in line 11 with the name of the **first** Azure App Service web app you generated earlier in this exercise.
 1. In the **.github/workflows/eshoponweb-cicd.yml** pane, select **Commit changes** and then select **Commit changes** again.
-1. In the web browser window displaying the **project-update-and-adds** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **.azure/bicep** folder and select **webapp.bicep**.
-1. In the **infra/main.bicep** pane, select the pencil icon to edit the workflow.
+1. In the web browser window displaying the **main** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **infra** folder and select **webapp.bicep**.
+1. In the **infra/webapp.bicep** pane, select the pencil icon to edit the workflow.
 1. In the **Edit** pane, replace line 2 with the following text:
 
    ```yaml
    param sku string = 'S1' // The SKU of App Service Plan
    ```
 
-1. In the **infra/main.bicep** pane, select **Commit changes** and then select **Commit changes** again.
+1. In the **infra/webapp.bicep** pane, select **Commit changes** and then select **Commit changes** again.
 1. In the web browser window displaying the forked **eShopOnWeb** GitHub repo page, select **Actions**.
-1. In the **All workflows** section on the left side, select **eShopOnWeb Build and Deploy**.
-1. In the **eShopOnWeb Build and Deploy** pane, select **Run workflow**, in the drop-down list displaying **Branch: main**, select **project-update-and-adds** and select **Run workflow** again.
+1. If you are prompted to enable GitHub Actions, select **I understand my workflows, go ahead and enable them**.
+    >**Note**: This is expected, since, by default GitHub will disable workflows in a forked repo for your own protection.
+1. In the **All workflows** section on the left side, select **eShopOnWeb Build and Test**.
+1. In the **eShopOnWeb Build and Test** pane, select **Run workflow**, in the drop-down list confirm that **Branch: main** is selected and select **Run workflow** again.
 
     >**Note**: This should trigger a workflow run.
 
-1. Select the **eShopOnWeb Build and Deploy** workflow run.
-1. In the **eShopOnWeb Build and Deploy #1** pane, select **buildandtest**.
+1. Select the **eShopOnWeb Build and Test** workflow run.
+
+    >**Note**: If needed, refresh the page to see the latest workflow run.
+
+1. In the **eShopOnWeb Build and Test #1** pane, select **buildandtest**.
 1. Monitor the progress of the workflow and verify that all steps of the **buildandtest** job complete successfully.
 1. Once this job completes, in the **Summary** section, select **deploy**.
 1. Monitor the progress of the workflow and verify that all steps of the **deploy** job complete successfully.
 
     >**Note**: In case any of the steps fail, from the same page that displays the workflow progress, in the upper right corner, select **Re-run all jobs** and then, in the **Re-run all jobs** pane, select **Re-run jobs**.
 
-1. Switch to the web browser window displaying the forked **eShopOnWeb** GitHub repo page and, if needed, on the **eShopOnWeb** page, in the drop-down list displaying the current branch **main**, select the **project-update-and-adds** branch.
-1. In the web browser window displaying the **project-update-and-adds** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **.github/workflows** folder and select **eshoponweb-cicd.yml**.
+1. Switch to the web browser window displaying the forked **eShopOnWeb** GitHub repo page and, if needed, on the **eShopOnWeb** page, in the drop-down list confirm that the current branch is **main**.
+1. In the web browser window displaying the **main** branch of the forked **eShopOnWeb** GitHub repo page, navigate to the **.github/workflows** folder and select **eshoponweb-cicd.yml**.
 1. In the **.github/workflows/eshoponweb-cicd.yml** pane, select the pencil icon to edit the workflow.
 1. In the **Edit** pane, replace line 8 with the following text:
 
    ```yaml
-    RESOURCE-GROUP: rg-az400-eshoponweb-eastus
+    RESOURCE-GROUP: rg-eshoponweb-eastus
    ```
 
-1. In the **Edit** pane, replace the `az400-webapp-NAME` placeholder in line 11 with the name of the second Azure App Service web app you generated earlier in this exercise:
+1. In the **Edit** pane, replace the `eshoponweb-webapp-NAME` placeholder in line 11 with the name of the **second** Azure App Service web app you generated earlier in this exercise.
 1. In the **.github/workflows/eshoponweb-cicd.yml** pane, select **Commit changes** and then select **Commit changes** again.
 1. In the web browser window displaying the forked **eShopOnWeb** GitHub repo page, select **Actions**.
-1. In the **All workflows** section on the left side, select **eShopOnWeb Build and Deploy**.
-1. In the **eShopOnWeb Build and Deploy** pane, select **Run workflow**, in the drop-down list displaying **Branch: main**, select **project-update-and-adds** and select **Run workflow** again.
+1. In the **All workflows** section on the left side, select **eShopOnWeb Build and Test**.
+1. In the **eShopOnWeb Build and Test** pane, select **Run workflow**, in the drop-down list confirm that **Branch: main** is selected and select **Run workflow** again.
 
     >**Note**: This should trigger a workflow run.
 
-1. Select the **eShopOnWeb Build and Deploy** workflow run.
-1. In the **eShopOnWeb Build and Deploy #2** pane, select **buildandtest**.
+1. Select the **eShopOnWeb Build and Test** workflow run.
+1. In the **eShopOnWeb Build and Test #2** pane, select **buildandtest**.
 1. Monitor the progress of the workflow and verify that all steps of the **buildandtest** job complete successfully.
 1. Once this job completes, in the **Summary** section, select **deploy**.
 1. Monitor the progress of the workflow and verify that all steps of the **deploy** job complete successfully.
 
     >**Note**: In case any of the steps fail, from the same page that displays the workflow progress, in the upper right corner, select **Re-run all jobs** and then, in the **Re-run all jobs** pane, select **Re-run jobs**.
 
+1. In the web browser window displaying the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
+1. On the **App Services** page, in the list of App Services, select the **devops-webapp-westeurope-** app service you created earlier in this exercise.
+1. On the **devops-webapp-westeurope-** page, in the **Essentials** section, verify that the **Default domain** value is displayed and select it to open the web app in a new browser tab.
+1. In the new browser tab, verify that the web app is displayed and that it is functional. You can also verify the second web app in the **East US** region in the same way.
     >**Note**: Leave the deployed Azure resources running. You will need them in the next lab.
