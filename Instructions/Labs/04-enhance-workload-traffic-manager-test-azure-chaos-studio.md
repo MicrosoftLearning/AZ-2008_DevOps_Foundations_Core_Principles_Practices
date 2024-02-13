@@ -15,6 +15,7 @@ In this lab, you will:
 - Prepare the Azure subscription for the lab
 - Enhance workload resiliency by using Traffic Manager
 - Test workload resiliency by using Azure Chaos Studio
+- Remove the resources used in the labs
 
 > **Note:** In the previous lab, you deployed two instances of a .NET web app into two Azure region. In this lab, you will first create a resilient configuration that implements the load balancing functionality of Azure Traffic Manager between the two web app instances. Next, you will use Azure Chaos Studio to trigger a failure of one of the apps to test the resiliency of the load balancing implementation.
 
@@ -46,7 +47,7 @@ In this lab, you will:
 
 In this exercise, you will implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
 
-> **Note:** For the purpose of our lab, we will consider the deployment of .NET-based web app in the East US region as the primary instance. While in this case such consideration is purely arbitrary (and used for demonstration purposes only), there might be scenarios where it might be beneficial to prioritize one of the endpoints.
+> **Note:** For the purpose of our lab, we will consider the deployment of .NET-based web app eShopOnWeb in the East US region as the primary instance. While in this case such consideration is purely arbitrary (and used for demonstration purposes only), there might be scenarios where it might be beneficial to prioritize one of the endpoints.
 
 The exercise consists of the following tasks:
 
@@ -59,7 +60,7 @@ The exercise consists of the following tasks:
 1. On the **Load balancing \| Traffic Manager** page, select **+ Create**.
 1. On the **Create Traffic Manager profile** page, perform the following actions:
 
-   - In the **Name** text box, enter **docoretmprofile04**.
+   - In the **Name** text box, enter **devopsfoundationstmprofile**.
 
        > **Note:** The name of the Traffic Manager profile must be globally unique. If you receive an error message indicating that the name is already in use, try a different name and make sure to record it. You will need it throughout this lab.
 
@@ -68,39 +69,39 @@ The exercise consists of the following tasks:
    > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-core-04a-RG**, and then select **OK**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-foundations-rg**, and then select **OK**.
    - In the **Resource group location** drop-down list, select the same Azure region you chose in the previous labs of this course.
 
 1. Select **Create** to start the provisioning process.
 
    > **Note:** Wait for the deployment to complete. This should complete within a minute.
 
-1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **docoretmprofile04**.
-1. On the **docoretmprofile04** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You will need it throughout this lab.
-1. On the **docoretmprofile04** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
-1. Review the content of the **docoretmprofile04 \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
+1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **devopsfoundationstmprofile**.
+1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You will need it throughout this lab.
+1. On the **devopsfoundationstmprofile** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
+1. Review the content of the **devopsfoundationstmprofile \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
 
    > **Note:** Lowering the value of TTL will accelerate the failover time. 
 
    > **Note:** In addition to the value of TTL, probing interval, probe timeout, and tolerated number of failures affect the amount of time that an endpoint failure is detected.
 
-1. On the **docoretmprofile04 \| Configuration** page, in the **Protocol** drop-down list, select **HTTPS** and, in the **Port** text box, enter **443**.
+1. On the **devopsfoundationstmprofile \| Configuration** page, in the **Protocol** drop-down list, select **HTTPS** and, in the **Port** text box, enter **443**.
 
    > **Note:** Both of the Azure App Service web apps that will be configured as endpoints are accessible via HTTPS on the default TCP port 443.
 
-1. On the **docoretmprofile04 \| Configuration** page, select **Save**.
-1. On the **docoretmprofile04** page, in the left navigation menu, in the **Settings** section, select **Endpoints**.
-1. On the **docoretmprofile04 \| Endpoints**** page, select **+ Add**.
+1. On the **devopsfoundationstmprofile \| Configuration** page, select **Save**.
+1. On the **devopsfoundationstmprofile** page, in the left navigation menu, in the **Settings** section, select **Endpoints**.
+1. On the **devopsfoundationstmprofile \| Endpoints**** page, select **+ Add**.
 
    > **Note:** You will first add an endpoint representing the Azure App Service web app.
 
 1. In the **Add endpoint** pane, perform the following actions:
 
    - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
-   - In the **Name** text box, enter **DevOps Core web app - East US**.
+   - In the **Name** text box, enter **DevOps Foundations web app - East US**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
-   - In the **Target resource** drop-down list, in the **rg-az400-eshoponweb-eastus** section, select the name of the App Service web app in the East US Azure region.
+   - In the **Target resource** drop-down list, in the **rg-eshoponweb-eastus** section, select the name of the App Service web app in the East US Azure region.
    - In the **Priority** text box, enter **1**.
 
    > **Note:** A lower priority value designates a higher precedence. In this case, all requests will be sent to the web app instance in the East US region, as long as that instance remains available.
@@ -109,22 +110,22 @@ The exercise consists of the following tasks:
 
 1. Select **Add**.
 
-1. Back on the **docoretmprofile04 \| Endpoints**** page, select **+ Add**.
+1. Back on the **devopsfoundationstmprofile \| Endpoints**** page, select **+ Add**.
 
    > **Note:** Next, you will add an endpoint representing the other Azure App Service web app deployed to the West Europe Azure region.
 
 1. In the **Add endpoint** pane, perform the following actions:
 
    - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
-   - In the **Name** text box, enter **DevOps Core web app - West Europe**.
+   - In the **Name** text box, enter **DevOps Foundations web app - West Europe**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
-   - In the **Target resource** drop-down list, in the **rg-az400-eshoponweb-westeurope** section, select the name of the App Service web app in the West Europe Azure region.
+   - In the **Target resource** drop-down list, in the **rg-eshoponweb-westeurope** section, select the name of the App Service web app in the West Europe Azure region.
    - In the **Priority** text box, enter **2**.
    - Ensure that the **Health Checks** are enabled.
 
 1. Select **Add**.
-1. Back on the **docoretmprofile04 \| Endpoints**** page, verify that both endpoints are listed with the **Online** entry in the **Monitor status** column.
+1. Back on the **devopsfoundationstmprofile \| Endpoints**** page, verify that both endpoints are listed with the **Online** entry in the **Monitor status** column.
 
    > **Note:** You might need to wait a couple of minutes and select **Refresh** before the status entry is up-to-date.
 
@@ -136,7 +137,7 @@ The exercise consists of the following tasks:
 1. Switch over to the web browser window displaying the Azure portal.
 1. In the Azure portal, select the **Azure Cloud Shell** icon to the right of the search text box.
 1. If necessary, select **Bash** in the drop-down menu in the upper-left corner of the Cloud Shell pane.
-1. In the Bash session within the Cloud Shell pane, run the following command to resolve the DNS name of the Traffic Manager profile you created in the previous task to one of two corresponding endpoints (replace the placeholder `<tm_profile>` with the DNS name of the Traffic Manager profile, but make sure to remove the leading `https:\\`):
+1. In the Bash session within the Cloud Shell pane, run the following command to resolve the DNS name of the Traffic Manager profile you created in the previous task to one of two corresponding endpoints (replace the placeholder `<tm_profile>` with the DNS name of the Traffic Manager profile, for example, `devopsfoundationstmprofile.trafficmanager.net`), but make sure to remove the leading `https:\\`:
 
    ```cli
    nslookup <tm_profile>
@@ -160,7 +161,7 @@ The exercise consists of the following tasks:
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
 1. On the **Chaos Studio** page, select **Targets**.
-1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **rg-az400-eshoponweb-eastus** resource group in the East US region you deployed in the previous lab.
+1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **rg-eshoponweb-eastus** resource group in the East US region you deployed in the previous lab.
 1. In the toolbar, select the **Enable targets** drop-down list header and, in the drop-down list select **Enable service-direct targets (All resources)**.
 1. On the **Enable service direct targets** page, ensure that the correct App Service web app instance is listed, select **Review + Enable**, and then select **Enable**.
 
@@ -174,8 +175,8 @@ The exercise consists of the following tasks:
 1. On the **Basics** tab of the **Create an experiment** page, perform the following actions:
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list.
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-core-04b-RG**, and then select **OK**.
-   - In the **Experiment details** section, in the **Name** text box, enter **DevOps_Core_Labs_Experiment_04b**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-foundations-rg**, and then select **OK**.
+   - In the **Experiment details** section, in the **Name** text box, enter **DevOps_Foundations_Labs_Experiment_01**.
    - In the **Region** drop-down list, select the **West Europe** Azure region.
 
    > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the West Europe region, any region other than East US seems more appropriate.
@@ -210,11 +211,11 @@ The exercise consists of the following tasks:
 ### Task 3: Validate the experiment
 
 1. In the Azure portal, navigate back to the **Chaos Studio** page and, in the vertical menu on the left side, select **Experiments**.
-1. In the list of experiments, select **DevOps_Core_Labs_Experiment_04b**.
-1. On the **DevOps_Core_Labs_Experiment_04b** page, select **Start** and, when prompted for confirmation, select **OK**.
+1. In the list of experiments, select **DevOps_Foundations_Labs_Experiment_01**.
+1. On the **DevOps_Foundations_Labs_Experiment_01** page, select **Start** and, when prompted for confirmation, select **OK**.
 1. Wait until the status of the experiment changes to **Running**.
-1. On the **DevOps_Core_Labs_Experiment_04b** page, in the **History** section, select the **Details** link in the entry representing the current experiment execution.
-1. On the **DevOps_Core_Labs_Experiment_04b** experiment details page, review the listing containing the step, branch, and action associated with the experiment.
+1. On the **DevOps_Foundations_Labs_Experiment_01** page, in the **History** section, select the **Details** link in the entry representing the current experiment execution.
+1. On the **DevOps_Foundations_Labs_Experiment_01** experiment details page, review the listing containing the step, branch, and action associated with the experiment.
 
    > **Note:** You might need to select **Refresh** toolbar entry to update the status of the listing.
 
@@ -239,3 +240,20 @@ The exercise consists of the following tasks:
 1. Rerun the same command a few times, waiting for a bit more than 5 seconds between each invocation (to eliminate the possibility of DNS caching) and verify that the output in each case references the DNS name of the web app in the West Europe Azure region.
 
 > **Note:** While this example might seem a bit simplistic, the primary objective of the exercise was to illustrate the process of implementing Azure Chaos Studio-based testing and its primary components. You would use the equivalent approach if an Azure App Service web app was a part of more complex environment, where the impact of its failure might be much more challenging to predict.
+
+### Exercise 3: Remove the resources used in the labs
+
+In this exercise, you will remove the resources used in the labs.
+
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Resource groups** and, in the list of results, select **Resource groups**.
+1. On the **Resource groups** page, in the list of resource groups, select the resource group you created in the current lab.
+1. On the resource group page, select **Delete resource group**.
+1. In the **Enter resource group name to confirm deletion** text box, enter the name of the resource group you are about to delete, and then select **Delete**.
+
+   > **Note:** Wait for the resource group to be deleted. This should take less than a minute.
+
+1. Repeat the previous step for the resource group you created in the previous labs of this course.
+
+    > **Note:** Deleting the resource group will remove all resources associated with it, including the Traffic Manager profile and the Azure Chaos Studio environment.
+
+    > **Note:** There is no need to delete the GitHub account and the repositories you created in the previous labs of this course. You can continue using them as a portfolio of your work.

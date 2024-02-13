@@ -6,7 +6,7 @@ lab:
 
 # Lab 03 - Implement CI/CD with GitHub Actions and IaC with Bicep
 
-## Estimated timing: 30 minutes
+## Estimated timing: 40 minutes
 
 ## Objectives
 
@@ -126,7 +126,7 @@ The exercise consists of the following tasks:
 1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the subscription:
 
    ```cli
-   az ad sp create-for-rbac --name "devopsfoundationslab" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
+   az ad sp create-for-rbac --name "devopsfoundationslabsp" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
    ```
 
 1. Copy the entire JSON-formatted output of the command and record it. You will need it shortly. The output should have the format that resembles the following text:
