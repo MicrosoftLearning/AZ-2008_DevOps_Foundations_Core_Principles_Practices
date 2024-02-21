@@ -8,6 +8,9 @@ lab:
 
 ## Estimated timing: 30 minutes
 
+## Scenario
+Remember this module’s scenario in which you’re working for a software development company in the retail industry that is planning to migrate an online store from an old app to a new app called eShopOnWeb. Since you have decided to use Git and GitHub to facilitate application lifecycle management, this lab gives you the opportunity to start by forking an existing repo, configuring it, creating an issue, creating a branch, updating files in the branch, creating and merging a pull request, closing the issue and validating the changes.
+
 ## Objectives
 
 In this lab, you will:

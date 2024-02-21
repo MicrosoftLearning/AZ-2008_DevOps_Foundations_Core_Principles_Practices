@@ -8,6 +8,9 @@ lab:
 
 ## Estimated timing: 35 minutes
 
+## Scenario
+Remember this module’s scenario in which you work for a software development company in the retail industry that is experiencing frequent downtime and performance issues with their new online store application. Since you have decided to enhance workload and test resiliency using Traffic Manager and Azure Chaos Studio respectively, this lab gives you the opportunity to implement a Traffic Manager profile and validate Traffic Manager functionality, configure Azure Chaos Studio environment, and implement and validate an experiment.
+
 ## Objectives
 
 In this lab, you will:
