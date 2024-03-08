@@ -28,7 +28,7 @@ In this lab, you will:
 
 In this exercise, you will fork a Git repo and manage it by using GitHub.
 
-> **Important:** The GitHub Copilot for pull request feature usage is completely optional. To use this feature, you must be a member of an enterprise with a **Copilot Enterprise subscription**. You can skip the steps that involve the GitHub Copilot for pull request feature if you don't have access to it.
+> **Important:** The GitHub Copilot for pull request feature usage is completely optional. To use this feature, you must be a member of an enterprise with a **Copilot Enterprise subscription**. You can skip the steps that involve the GitHub Copilot for pull request feature if you don't have access to it. If you want to know more about the GitHub Copilot for pull request feature, refer to [About Copilot pull request summaries](https://docs.github.com/en/enterprise-cloud@latest/copilot/github-copilot-enterprise/copilot-pull-request-summaries/about-copilot-pull-request-summaries).
 
 > **Note:** You created a new repo in the first lab of our course. In this lab, you will start by forking an existing repo. A fork is a repository that shares code and visibility settings with an existing upstream repository. This approach is frequently used when developing updates to open-source projects or in scenarios where write access to the upstream repository is not available. For more information, refer to [Working with forks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks).
 
