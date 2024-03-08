@@ -9,6 +9,7 @@ lab:
 ## Estimated timing: 40 minutes
 
 ## Scenario
+
 Remember this module’s scenario in which you work for a software development company in the retail industry that wants to ensure that the release process of a new version of their online store application is efficient and reliable while minimizing the risk of errors. Since you have decided to use GitHub to facilitate application lifecycle management, this lab gives you the opportunity to fork and review the GitHub repo containing the source code of a web app, a GitHub Actions workflow, and a Bicep template. Additionally, you’ll be able to configure the target environment and validate the Infrastructure as Code (IaC) and CI/CD functionality.
 
 ## Objectives
