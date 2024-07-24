@@ -199,7 +199,7 @@ The exercise consists of the following tasks:
 1. Note that closing the item resulted in the following actions:
 
    - The status of the item was automatically changed to **Done**, as indicated by an extra comment stating that **github-project-automation** bot moved the item from **In Progress** to **Done** in **DevOps Core Intro Project**.
-   - **alpha release** milestone has been marked as complete, as indicated by the green horizontal bar in the **Milestone** section of the page.
+   - **alpha release** milestone has been marked as 50% complete, as indicated by the green horizontal bar in the **Milestone** section of the page.
 
    > **Note:** In case you don't see the changes, refresh the page.
 
