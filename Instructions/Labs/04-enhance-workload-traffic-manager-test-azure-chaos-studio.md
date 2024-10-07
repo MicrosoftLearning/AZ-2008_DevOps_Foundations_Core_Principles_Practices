@@ -49,7 +49,7 @@ In this lab, you will:
 
 ## Exercise 1: Enhance workload resiliency by using Traffic Manager
 
-In this exercise, you will implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
+In this exercise, you'll implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
 
 > **Note:** For the purpose of our lab, we will consider the deployment of .NET-based web app eShopOnWeb in the East US region as the primary instance. While in this case such consideration is purely arbitrary (and used for demonstration purposes only), there might be scenarios where it might be beneficial to prioritize one of the endpoints.
 
@@ -62,7 +62,7 @@ The exercise consists of the following tasks:
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Traffic Manager profiles** and, in the list of results, select **Traffic Manager profiles**.
 1. On the **Load balancing \| Traffic Manager** page, select **+ Create**.
-1. On the **Create Traffic Manager profile** page, perform the following actions:
+1. On the **Create Traffic Manager profile** page, do the following actions:
 
    - In the **Name** text box, enter **devopsfoundationstmprofile**.
 
@@ -81,7 +81,7 @@ The exercise consists of the following tasks:
    > **Note:** Wait for the deployment to complete. This should complete within a minute.
 
 1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **devopsfoundationstmprofile**.
-1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You will need it throughout this lab.
+1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You'll need it throughout this lab.
 1. On the **devopsfoundationstmprofile** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
 1. Review the content of the **devopsfoundationstmprofile \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
 
@@ -151,7 +151,7 @@ The exercise consists of the following tasks:
 
 ## Exercise 2: Test workload resiliency by using Azure Chaos Studio
 
-In this exercise, you will test workload resiliency by using Azure Chaos Studio.
+In this exercise, you'll test workload resiliency by using Azure Chaos Studio.
 
 > **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigation proactively, rather than reactively.
 
@@ -186,8 +186,8 @@ The exercise consists of the following tasks:
    > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the West Europe region, any region other than East US seems more appropriate.
 
 1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
-1. On the **Permissions** tab, accept the default option **System assigned identity** and then select **Next: Experiment designer >**.
-1. On the **Experiment designer** tab, perform the following actions:
+1. On the **Permissions** tab, accept the default option **System-assigned identity** and then select **Next: Experiment designer >**.
+1. On the **Experiment designer** tab, do the following actions:
 
    - In the **Step** text box, enter **Step 1: Failover an App Service web app**.
    - In the **Branch** text box, enter **Branch 1: Emulate an App Service failure**.
@@ -247,12 +247,12 @@ The exercise consists of the following tasks:
 
 ### Exercise 3: Remove the resources used in the labs
 
-In this exercise, you will remove the resources used in the labs.
+In this exercise, you'll remove the resources used in the labs.
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Resource groups** and, in the list of results, select **Resource groups**.
 1. On the **Resource groups** page, in the list of resource groups, select the resource group you created in the current lab.
 1. On the resource group page, select **Delete resource group**.
-1. In the **Enter resource group name to confirm deletion** text box, enter the name of the resource group you are about to delete, and then select **Delete**.
+1. In the **Enter resource group name to confirm deletion** text box, enter the name of the resource group you're about to delete, and then select **Delete**.
 
    > **Note:** Wait for the resource group to be deleted. This should take less than a minute.
 

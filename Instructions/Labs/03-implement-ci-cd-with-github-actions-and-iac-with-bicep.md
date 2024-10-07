@@ -27,7 +27,7 @@ In this lab, you will:
 
 - Completed [Lab 01 - Agile Planning and Management using GitHub](01-agile-planning-management-using-github.md)
 - Completed [Lab 02 - Implement Flow of Work with GitHub](02-implement-manage-repositories-using-github.md)
-- An Azure subscription to which you have at least the Contributor-level access. If you do not have an Azure subscription, you can sign up for a [free trial](https://azure.microsoft.com/free).
+- An Azure subscription to which you have at least the Contributor-level access. If you don't have an Azure subscription, you can sign up for a [free trial](https://azure.microsoft.com/free).
 
 ## Exercise 0: Prepare the Azure subscription for the lab
 
@@ -47,7 +47,7 @@ In this lab, you will:
 
 ## Exercise 1: Implement Infrastructure as Code (IaC) and CI/CD with GitHub Actions and a Bicep template
 
-In this exercise, you will implement IaC with CI/CD to Azure App Service web apps with GitHub Actions and a Bicep template.
+In this exercise, you'll implement IaC with CI/CD to Azure App Service web apps with GitHub Actions and a Bicep template.
 
 > **Note:** To simplify the initial setup, you will use a fork of an existing GitHub repo that contains the source code of the .NET app, the GitHub Actions workflow, and the Bicep template.
 
@@ -59,7 +59,7 @@ The exercise consists of the following tasks:
 
 ### Task 1: Fork and review the GitHub repo containing the source code of a web app, a GitHub Actions workflow, and a Bicep template
 
-1. Switch to the browser window displaying your GitHub account and ensure that you are still authenticated (if not, sign in by using your GitHub user account).
+1. Switch to the browser window displaying your GitHub account and ensure that you're still authenticated (if not, sign in by using your GitHub user account).
 1. Open another tab in the same browser window and navigate to the [eShopOnWeb](https://github.com/MicrosoftLearning/eShopOnWeb) repo, which hosts the .NET version of a sample web site, a GitHub Actions workflow, and a Bicep template.
 1. On the **eShopOnWeb** repo page, select **Fork**.
 1. On the **Create a new fork** page, ensure that the **Owner** drop-down list entry displays your GitHub user name, accept the default entry **eShopOnWeb** in the **Repository name** text box, and confirm the **Copy the main branch only** checkbox is checked, and then select **Create fork**.
@@ -73,7 +73,7 @@ The exercise consists of the following tasks:
    - the **infra** directory containing the Bicep template named **webapp.bicep**
    - the **src/Web** directory containing the .NET code of the source web app
 
-1. Open the **.github/workflows** directory and then select the **eshoponweb-cicd.yml** file to view its content. Note that this GitHub Actions workflow contains the **buildandtest** and **deploy** jobs, which consists of the following steps:
+1. Open the **.github/workflows** directory and then select the **eshoponweb-cicd.yml** file to view its content. Note that this GitHub Actions workflow contains the **buildandtest** and **deploy** jobs, which consist of the following steps:
 
    - buildandtest
       - checkout the repository
@@ -94,7 +94,7 @@ The exercise consists of the following tasks:
 
    > **Note:** You will need to create the resource group before you run the workflow.
 
-1. Note that the workflow relies on a secret to authenticate to the target Azure subscription during the Set up Azure CLI step, as evidenced by the statement `creds: ${{ secrets.AZURE_CREDENTIALS }}`.
+1. Note that the workflow relies on a secret to authenticate to the target Azure subscription during the Set-up Azure CLI step, as evidenced by the statement `creds: ${{ secrets.AZURE_CREDENTIALS }}`.
 
    > **Note:** You will need to set up this secret before you run the workflow.
 
@@ -126,14 +126,14 @@ The exercise consists of the following tasks:
    echo $SUBCRIPTION_ID
    ```
 
-1. Copy the value of the Subscription ID returned by the second command and record it. You will need it later in this exercise.
+1. Copy the value of the Subscription ID returned by the second command and record it. You'll need it later in this exercise.
 1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the subscription:
 
    ```cli
    az ad sp create-for-rbac --name "devopsfoundationslabsp" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
    ```
 
-1. Copy the entire JSON-formatted output of the command and record it. You will need it shortly. The output should have the format that resembles the following text:
+1. Copy the entire JSON-formatted output of the command and record it. You'll need it shortly. The output should have the format that resembles the following text:
 
    ```json
    {
@@ -155,20 +155,20 @@ The exercise consists of the following tasks:
 1. In the **Actions secrets and variables** pane, select **New repository secret**.
 1. In the **Actions secrets / New secret** pane, in the **Name** text box, enter **AZURE_CREDENTIALS**.
 1. In the **Secret** text box, paste the JSON-formatted text you recorded earlier in this task and select **Add secret**.
-1. Switch back to the web browser displaying the Bash session within the Cloud Shell pane and run the following command to generate the name of the first App Service web app you will be deploying:
+1. Switch back to the web browser displaying the Bash session within the Cloud Shell pane and run the following command to generate the name of the first App Service web app you'll be deploying:
 
    ```cli
    echo devops-webapp-westeurope-$RANDOM$RANDOM
    ```
 
-1. Copy the value returned by the command and record it. You will use it later in this exercise.
-1. In the Bash session within the Cloud Shell pane, run the following command to generate the name of the second App Service web app you will be deploying:
+1. Copy the value returned by the command and record it. You'll use it later in this exercise.
+1. In the Bash session within the Cloud Shell pane, run the following command to generate the name of the second App Service web app you'll be deploying:
 
    ```cli
    echo devops-webapp-eastus-$RANDOM$RANDOM
    ```
 
-1. Copy the value returned by the command and record it. You will use it later in this exercise.
+1. Copy the value returned by the command and record it. You'll use it later in this exercise.
 
 ### Task 3: Validate the IaC and CI/CD functionality
 
@@ -202,7 +202,7 @@ The exercise consists of the following tasks:
 
 1. In the **infra/webapp.bicep** pane, select **Commit changes** and then select **Commit changes** again.
 1. In the web browser window displaying the forked **eShopOnWeb** GitHub repo page, select **Actions**.
-1. If you are prompted to enable GitHub Actions, select **I understand my workflows, go ahead and enable them**.
+1. If you're prompted to enable GitHub Actions, select **I understand my workflows, go ahead and enable them**.
     >**Note**: This is expected, since, by default GitHub will disable workflows in a forked repo for your own protection.
 1. In the **All workflows** section on the left side, select **eShopOnWeb Build and Test**.
 1. In the **eShopOnWeb Build and Test** pane, select **Run workflow**, in the drop-down list confirm that **Branch: main** is selected and select **Run workflow** again.
@@ -248,5 +248,5 @@ The exercise consists of the following tasks:
 1. In the web browser window displaying the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
 1. On the **App Services** page, in the list of App Services, select the **devops-webapp-westeurope-** app service you created earlier in this exercise.
 1. On the **devops-webapp-westeurope-** page, in the **Essentials** section, verify that the **Default domain** value is displayed and select it to open the web app in a new browser tab.
-1. In the new browser tab, verify that the web app is displayed and that it is functional. You can also verify the second web app in the **East US** region in the same way.
+1. In the new browser tab, verify that the web app is displayed and that it's functional. You can also verify the second web app in the **East US** region in the same way.
     >**Note**: Leave the deployed Azure resources running. You will need them in the next lab.

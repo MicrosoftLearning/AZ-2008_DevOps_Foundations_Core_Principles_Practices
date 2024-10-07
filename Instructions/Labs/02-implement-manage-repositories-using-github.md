@@ -26,7 +26,7 @@ In this lab, you will:
 
 ## Exercise 1: Implement and manage repos with GitHub
 
-In this exercise, you will fork a Git repo and manage it by using GitHub.
+In this exercise, you'll fork a Git repo and manage it by using GitHub.
 
 > **Important:** The GitHub Copilot for pull request feature usage is completely optional. To use this feature, you must be a member of an enterprise with a **Copilot Enterprise subscription**. You can skip the steps that involve the GitHub Copilot for pull request feature if you don't have access to it. If you want to know more about the GitHub Copilot for pull request feature, refer to [About Copilot pull request summaries](https://docs.github.com/en/enterprise-cloud@latest/copilot/github-copilot-enterprise/copilot-pull-request-summaries/about-copilot-pull-request-summaries).
 
@@ -145,7 +145,7 @@ The exercise consists of the following tasks:
 ### Task 6: Create and merge a pull request
 
 1. Navigate back to the forked **Spoon-Knife** repo page.
-1. Ensure that you are currently viewing the **update-index.html** branch, as indicated by the label appearing in the drop-down list in the upper-left corner of the page. If that label displays **main**, select it first and then, in the drop-down list containing the list of branches, select **update-index.html**.
+1. Ensure that you're currently viewing the **update-index.html** branch, as indicated by the label appearing in the drop-down list in the upper-left corner of the page. If that label displays **main**, select it first and then, in the drop-down list containing the list of branches, select **update-index.html**.
 1. On the forked **Spoon-Knife** repo page, select **Contribute** and then select **Open pull request**.
 1. On the **Open a pull request** page, select the entry **base repository: octocat/Spoon-Knife**.
 1. In the **Choose a Base Repository** drop-down list, select the name of the forked repository you created at the beginning of this lab.
