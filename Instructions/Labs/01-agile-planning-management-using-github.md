@@ -159,6 +159,7 @@ The exercise consists of the following tasks:
 
 1. On the **DevOps Core Intro Project** page, in the **Todo** column, select **+ Add item**.
 1. In the text box, enter **Additional collaborators needed** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the newly added draft item, select the ellipsis symbol and, in the drop-down menu, select **Convert to issue** and select **DevOpsCoreIntroRepo** to add the item to the repo.
 
 ### Task 2: Add an item based on an issue
 
