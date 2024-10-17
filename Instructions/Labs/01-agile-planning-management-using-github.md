@@ -10,7 +10,7 @@ lab:
 
 ## Scenario
 
-Remember this module’s scenario in which you’re working for a software development company in the retail industry that is planning to migrate its online store to a new app but is experiencing difficulties planning the project due to little collaboration and communication between the development and operations teams. Since you have decided to use GitHub for Agile planning and management, this lab gives you the opportunity to create a GitHub repo, associated milestones and issues, a project, and project board. Additionally, you’ll be able to add a draft item to the project board and an item based on an issue and review the automation settings.
+Remember this module's scenario in which you're working for a software development company in the retail industry that is planning to migrate its online store to a new app but is experiencing difficulties planning the project due to little collaboration and communication between the development and operations teams. Since you have decided to use GitHub for Agile planning and management, this lab gives you the opportunity to create a GitHub repo, associated milestones and issues, a project, and project board. Additionally, you’ll be able to add a draft item to the project board and an item based on an issue and review the automation settings.
 
 ## Objectives
 
@@ -42,7 +42,7 @@ The exercise consists of the following tasks:
 1. On the **Create a new repository** page, do the following actions:
 
    - In the **Owner** drop-down list, select your GitHub user account name.
-   - In the **Repository name** text box, enter **DevOpsCoreIntroRepo**.
+   - In the **Repository name** text box, enter **`DevOpsCoreIntroRepo`**.
    - Change the visibility of the repo to **Private**.
    - Enable the **Add a README file** checkbox.
    - In the **Add .gitignore** drop-down list, select **Visual Studio**.
