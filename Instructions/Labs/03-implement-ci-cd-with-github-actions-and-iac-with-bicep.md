@@ -37,7 +37,7 @@ In this lab, you will:
 
 1. Start a web browser and navigate to the Azure portal at `https://portal.azure.com`.
 1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription available to you.
-1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Subscriptions** and, in the list of results, select **Subscriptions**.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Subscriptions`** and, in the list of results, select **Subscriptions**.
 1. On the **Subscriptions** page, select the subscription you want to use in this lab.
 1. On the subscriptions page, in the vertical menu on the left side, select **Resource providers**.
 1. In the list of resource providers, search for and select **Microsoft.CloudShell**.
@@ -105,13 +105,13 @@ The exercise consists of the following tasks:
 > **Note:** You will start by creating the resource groups. You will run the workflow twice in order to deploy two instances of the website in two different Azure regions.
 
 1. Switch to the web browser tab displaying the Azure portal at `https://portal.azure.com`.
-1. In the Azure portal, in the search text box at the top of the page, enter **Resource groups** and select **Resource groups** in the list of results.
+1. In the Azure portal, in the search text box at the top of the page, enter **`Resource groups`** and select **Resource groups** in the list of results.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **rg-eshoponweb-westeurope**.
+1. In the **Resource groups** text box, enter **`rg-eshoponweb-westeurope`**.
 1. In the **Region** drop-down list, select **(Europe) West Europe**.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 1. On the **Resource groups** page, select **+ Create**.
-1. In the **Resource groups** text box, enter **rg-eshoponweb-eastus**.
+1. In the **Resource groups** text box, enter **`rg-eshoponweb-eastus`**.
 1. In the **Region** drop-down list, select **(US) East US**.
 1. Select **Review + create** and then, on the **Review + create**, select **Create**.
 
@@ -153,7 +153,7 @@ The exercise consists of the following tasks:
 1. Switch to the web browser window displaying the forked **eShopOnWeb** GitHub repo page and, in the toolbar, select **Settings**.
 1. In the vertical menu on the left side, in the **Security** section, select **Secrets and variables** and, in the drop-down list, select **Actions**.
 1. In the **Actions secrets and variables** pane, select **New repository secret**.
-1. In the **Actions secrets / New secret** pane, in the **Name** text box, enter **AZURE_CREDENTIALS**.
+1. In the **Actions secrets / New secret** pane, in the **Name** text box, enter **`AZURE_CREDENTIALS`**.
 1. In the **Secret** text box, paste the JSON-formatted text you recorded earlier in this task and select **Add secret**.
 1. Switch back to the web browser displaying the Bash session within the Cloud Shell pane and run the following command to generate the name of the first App Service web app you'll be deploying:
 
@@ -245,7 +245,7 @@ The exercise consists of the following tasks:
 
     >**Note**: In case any of the steps fail, from the same page that displays the workflow progress, in the upper right corner, select **Re-run all jobs** and then, in the **Re-run all jobs** pane, select **Re-run jobs**.
 
-1. In the web browser window displaying the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
+1. In the web browser window displaying the Azure portal, in the search text box at the top of the page, enter **`App Services`** and select **App Services** in the list of results.
 1. On the **App Services** page, in the list of App Services, select the **devops-webapp-westeurope-** app service you created earlier in this exercise.
 1. On the **devops-webapp-westeurope-** page, in the **Essentials** section, verify that the **Default domain** value is displayed and select it to open the web app in a new browser tab.
 1. In the new browser tab, verify that the web app is displayed and that it's functional. You can also verify the second web app in the **East US** region in the same way.
