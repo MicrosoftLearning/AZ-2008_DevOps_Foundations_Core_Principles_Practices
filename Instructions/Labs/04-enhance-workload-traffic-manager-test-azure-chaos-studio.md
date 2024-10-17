@@ -73,7 +73,7 @@ The exercise consists of the following tasks:
    > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`devops-foundations-rg`**, and then select **OK**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`rg-devops-foundations`**, and then select **OK**.
    - In the **Resource group location** drop-down list, select the same Azure region you chose in the previous labs of this course.
 
 1. Select **Create** to start the provisioning process.
@@ -179,7 +179,7 @@ The exercise consists of the following tasks:
 1. On the **Basics** tab of the **Create an experiment** page, perform the following actions:
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list.
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`devops-foundations-rg`**, and then select **OK**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`rg-devops-foundations`**, and then select **OK**.
    - In the **Experiment details** section, in the **Name** text box, enter **`DevOps_Foundations_Labs_Experiment_01`**.
    - In the **Region** drop-down list, select the **West Europe** Azure region.
 
