@@ -40,7 +40,7 @@ In this lab, you will:
 
 1. Start a web browser and navigate to the Azure portal at `https://portal.azure.com`.
 1. If prompted, sign in by using your Microsoft Entra ID account with the Owner access to the Azure subscription you used in the previous lab.
-1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Subscriptions** and, in the list of results, select **Subscriptions**.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Subscriptions`** and, in the list of results, select **Subscriptions**.
 1. On the subscriptions page, in the vertical menu on the left side, select **Resource providers**.
 1. In the list of resource providers, search for and select **Microsoft.Chaos**.
 1. With the **Microsoft.Chaos** resource provider selected, in the toolbar, select **Register**.
@@ -49,7 +49,7 @@ In this lab, you will:
 
 ## Exercise 1: Enhance workload resiliency by using Traffic Manager
 
-In this exercise, you will implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
+In this exercise, you'll implement a resilient configuration that distributes requests between the two .NET web app instances in two different Azure regions by using Azure Traffic Manager.
 
 > **Note:** For the purpose of our lab, we will consider the deployment of .NET-based web app eShopOnWeb in the East US region as the primary instance. While in this case such consideration is purely arbitrary (and used for demonstration purposes only), there might be scenarios where it might be beneficial to prioritize one of the endpoints.
 
@@ -60,11 +60,11 @@ The exercise consists of the following tasks:
 
 ### Task 1: Implement a Traffic Manager profile
 
-1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Traffic Manager profiles** and, in the list of results, select **Traffic Manager profiles**.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Traffic Manager profiles`** and, in the list of results, select **Traffic Manager profiles**.
 1. On the **Load balancing \| Traffic Manager** page, select **+ Create**.
-1. On the **Create Traffic Manager profile** page, perform the following actions:
+1. On the **Create Traffic Manager profile** page, do the following actions:
 
-   - In the **Name** text box, enter **devopsfoundationstmprofile**.
+   - In the **Name** text box, enter **`devopsfoundationstmprofile`**.
 
        > **Note:** The name of the Traffic Manager profile must be globally unique. If you receive an error message indicating that the name is already in use, try a different name and make sure to record it. You will need it throughout this lab.
 
@@ -73,7 +73,7 @@ The exercise consists of the following tasks:
    > **Note:** We choose the priority routing method to reflect the somewhat arbitrary assumption that all of requests should be handled by the Azure App Service web app in the East US.
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-foundations-rg**, and then select **OK**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`rg-devops-foundations`**, and then select **OK**.
    - In the **Resource group location** drop-down list, select the same Azure region you chose in the previous labs of this course.
 
 1. Select **Create** to start the provisioning process.
@@ -81,7 +81,7 @@ The exercise consists of the following tasks:
    > **Note:** Wait for the deployment to complete. This should complete within a minute.
 
 1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **devopsfoundationstmprofile**.
-1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You will need it throughout this lab.
+1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You'll need it throughout this lab.
 1. On the **devopsfoundationstmprofile** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
 1. Review the content of the **devopsfoundationstmprofile \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
 
@@ -102,7 +102,7 @@ The exercise consists of the following tasks:
 1. In the **Add endpoint** pane, perform the following actions:
 
    - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
-   - In the **Name** text box, enter **DevOps Foundations web app - East US**.
+   - In the **Name** text box, enter **`DevOps Foundations web app - East US`**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
    - In the **Target resource** drop-down list, in the **rg-eshoponweb-eastus** section, select the name of the App Service web app in the East US Azure region.
@@ -121,7 +121,7 @@ The exercise consists of the following tasks:
 1. In the **Add endpoint** pane, perform the following actions:
 
    - Ensure that **Azure endpoint** appears in the **Type** drop-down list.
-   - In the **Name** text box, enter **DevOps Foundations web app - West Europe**.
+   - In the **Name** text box, enter **`DevOps Foundations web app - West Europe`**.
    - Ensure that the **Enable Endpoint** checkbox is selected.
    - In the **Target resource type** drop-down list, select **App Service**.
    - In the **Target resource** drop-down list, in the **rg-eshoponweb-westeurope** section, select the name of the App Service web app in the West Europe Azure region.
@@ -151,7 +151,7 @@ The exercise consists of the following tasks:
 
 ## Exercise 2: Test workload resiliency by using Azure Chaos Studio
 
-In this exercise, you will test workload resiliency by using Azure Chaos Studio.
+In this exercise, you'll test workload resiliency by using Azure Chaos Studio.
 
 > **Note:** This exercise illustrates the use of Azure Chaos Studio. The purpose of Azure Chaos Studio is to assist with measuring, understanding, and building application and service resilience. This is accomplished by intentionally disrupting workloads in order to identify resiliency gaps and implement corresponding mitigation proactively, rather than reactively.
 
@@ -163,7 +163,7 @@ The exercise consists of the following tasks:
 
 ### Task 1: Configure Azure Chaos Studio environment
 
-1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Chaos Studio`** and, in the list of results, select **Chaos Studio**.
 1. On the **Chaos Studio** page, select **Targets**.
 1. On the **Chaos Studio \| Targets** page, select the Azure App Service web app instance in the **rg-eshoponweb-eastus** resource group in the East US region you deployed in the previous lab.
 1. In the toolbar, select the **Enable targets** drop-down list header and, in the drop-down list select **Enable service-direct targets (All resources)**.
@@ -173,24 +173,24 @@ The exercise consists of the following tasks:
 
 ### Task 2: Implement an experiment
 
-1. In the Azure portal, in the search text box at the top of the page, enter **Chaos Studio** and, in the list of results, select **Chaos Studio**.
+1. In the Azure portal, in the search text box at the top of the page, enter **`Chaos Studio`** and, in the list of results, select **Chaos Studio**.
 1. On the **Chaos Studio** page, select **Experiments**.
 1. On the **Experiments** page, select **+ Create** and then, in the drop-down list, select **New experiment**.
 1. On the **Basics** tab of the **Create an experiment** page, perform the following actions:
 
    - Verify that your Azure subscription appears in the **Subscription** drop-down list.
-   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **devops-foundations-rg**, and then select **OK**.
-   - In the **Experiment details** section, in the **Name** text box, enter **DevOps_Foundations_Labs_Experiment_01**.
+   - Select the **Create new** link below the **Resource Group** drop-down list, in the **Name** text box, enter **`rg-devops-foundations`**, and then select **OK**.
+   - In the **Experiment details** section, in the **Name** text box, enter **`DevOps_Foundations_Labs_Experiment_01`**.
    - In the **Region** drop-down list, select the **West Europe** Azure region.
 
    > **Note:** You could potentially choose any Azure region, but considering that you are testing failures to a resource in the West Europe region, any region other than East US seems more appropriate.
 
 1. On the **Basics** tab of the **Create an experiment** page, select **Next: Permissions >**.
-1. On the **Permissions** tab, accept the default option **System assigned identity** and then select **Next: Experiment designer >**.
-1. On the **Experiment designer** tab, perform the following actions:
+1. On the **Permissions** tab, accept the default option **System-assigned identity** and then select **Next: Experiment designer >**.
+1. On the **Experiment designer** tab, do the following actions:
 
-   - In the **Step** text box, enter **Step 1: Failover an App Service web app**.
-   - In the **Branch** text box, enter **Branch 1: Emulate an App Service failure**.
+   - In the **Step** text box, enter **`Step 1: Failover an App Service web app`**.
+   - In the **Branch** text box, enter **`Branch 1: Emulate an App Service failure`**.
    - Select **+ Add action** and, in the drop-down list, select **Add fault**.
 
 1. On the **Fault details** tab of the **Add fault** pane, in the **Faults** drop-down list, select **Stop App Service** and set the value of **Duration (minutes)** to 10.
@@ -203,7 +203,7 @@ The exercise consists of the following tasks:
 
    > **Note:** For the experiment to succeed, you need to also grant the newly created managed service account permissions sufficient to stop the Azure App Service web app. We will leverage for this purpose the built-in Azure Contributor role, but you could create a custom role if you want to follow the principle of least privilege.
 
-1. In the Azure portal, in the search text box at the top of the page, enter **App Services** and select **App Services** in the list of results.
+1. In the Azure portal, in the search text box at the top of the page, enter **`App Services`** and select **App Services** in the list of results.
 1. On the **App Services** page, select the Azure App Service web app in the East US region you deployed in the previous lab.
 1. On the web app page, in the vertical menu on the left side, select **Access control (IAM)**.
 1. On the web app's **Access control (IAM)** page, select **+ Add** and, in the drop-down list, select **Add role assignment**.
@@ -247,12 +247,12 @@ The exercise consists of the following tasks:
 
 ### Exercise 3: Remove the resources used in the labs
 
-In this exercise, you will remove the resources used in the labs.
+In this exercise, you'll remove the resources used in the labs.
 
-1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **Resource groups** and, in the list of results, select **Resource groups**.
+1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Resource groups`** and, in the list of results, select **Resource groups**.
 1. On the **Resource groups** page, in the list of resource groups, select the resource group you created in the current lab.
 1. On the resource group page, select **Delete resource group**.
-1. In the **Enter resource group name to confirm deletion** text box, enter the name of the resource group you are about to delete, and then select **Delete**.
+1. In the **Enter resource group name to confirm deletion** text box, enter the name of the resource group you're about to delete, and then select **Delete**.
 
    > **Note:** Wait for the resource group to be deleted. This should take less than a minute.
 

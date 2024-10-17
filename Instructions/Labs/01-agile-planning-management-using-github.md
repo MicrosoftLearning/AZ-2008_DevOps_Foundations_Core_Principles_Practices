@@ -10,7 +10,7 @@ lab:
 
 ## Scenario
 
-Remember this module’s scenario in which you’re working for a software development company in the retail industry that is planning to migrate its online store to a new app but is experiencing difficulties planning the project due to little collaboration and communication between the development and operations teams. Since you have decided to use GitHub for Agile planning and management, this lab gives you the opportunity to create a GitHub repo, associated milestones and issues, a project, and project board. Additionally, you’ll be able to add a draft item to the project board and an item based on an issue and review the automation settings.
+Remember this module's scenario in which you're working for a software development company in the retail industry that is planning to migrate its online store to a new app but is experiencing difficulties planning the project due to little collaboration and communication between the development and operations teams. Since you have decided to use GitHub for Agile planning and management, this lab gives you the opportunity to create a GitHub repo, associated milestones and issues, a project, and project board. Additionally, you’ll be able to add a draft item to the project board and an item based on an issue and review the automation settings.
 
 ## Objectives
 
@@ -23,7 +23,7 @@ In this lab, you will:
 
 ## Exercise 1: Create a GitHub repo, project, and project board
 
-In this exercise, you will create a GitHub repo, project, and project board.
+In this exercise, you'll create a GitHub repo, project, and project board.
 
 > **Note:** As per GitHub documentation, Projects offer *an adaptable, flexible tool for planning and tracking work on GitHub*. Projects provide access to *boards*, which serve the role of *Kanban* boards. Kanban is a common and widely used framework in an Agile environment to represent the state of the project's work.
 
@@ -39,10 +39,10 @@ The exercise consists of the following tasks:
 1. Start a web browser and navigate to the [GitHub](https://github.com) home page.
 1. When prompted to authenticate, sign in by using your GitHub user account.
 1. On the GitHub main page, select the **Repositories** tab and then select **New**.
-1. On the **Create a new repository** page, perform the following actions:
+1. On the **Create a new repository** page, do the following actions:
 
    - In the **Owner** drop-down list, select your GitHub user account name.
-   - In the **Repository name** text box, enter **DevOpsCoreIntroRepo**.
+   - In the **Repository name** text box, enter **`DevOpsCoreIntroRepo`**.
    - Change the visibility of the repo to **Private**.
    - Enable the **Add a README file** checkbox.
    - In the **Add .gitignore** drop-down list, select **Visual Studio**.
@@ -63,17 +63,17 @@ The exercise consists of the following tasks:
 
 1. On the **Issues** page, to the left of the **New issue** button, select **Milestones**.
 1. On the **Milestones** page, select **New milestone**.
-1. On the **New milestone** page, perform the following actions:
+1. On the **New milestone** page, do the following actions:
 
-   - In the **Title** text box, enter **alpha release**.
+   - In the **Title** text box, enter **`alpha release`**.
    - In the **Due date (optional)** text box, enter the date one week ahead from the current date.
-   - In the **Description** text box, enter **Completion of the alpha release**.
+   - In the **Description** text box, enter **`Completion of the alpha release`**.
 
 1. Select **Create milestone**.
-1. Repeat the last three steps to create an **beta release** milestone with the due date two weeks ahead of the current date. In the **Description** text box, enter **Completion of the beta release**.
+1. Repeat the last three steps to create an **beta release** milestone with the due date two weeks ahead of the current date. In the **Description** text box, enter **`Completion of the beta release`**.
 1. Navigate back to the **Issues** page and select **New issue**.
-1. In the **Add a title** text box, enter **Repo README page is empty**.
-1. In the **Add a description** text box, enter **Brevity might be a virtue, but this README page can really use some text**.
+1. In the **Add a title** text box, enter **`Repo README page is empty`**.
+1. In the **Add a description** text box, enter **`Brevity might be a virtue, but this README page can really use some text`**.
 1. Select the gear icon next to the **Milestone** entry and, in the drop-down list, select **alpha release**.
 1. Select the gear icon next to the **Labels** entry and, in the drop-down list, select **bug**.
 1. Select **Submit new issue**. Note that the issue has been automatically assigned **#1**.
@@ -87,8 +87,8 @@ The exercise consists of the following tasks:
    > **Note:** Alternatively, you could start from scratch and display the project in the table, board, or roadmap format.
 
 1. On the new project page, select the autogenerated project name. This will automatically display the **Project settings** page.
-1. In the **Project name** text box, enter **DevOps Core Intro Project**.
-1. In the **Short description** text box, enter **Introduction to GitHub Projects** and select **Save**.
+1. In the **Project name** text box, enter **`DevOps Core Intro Project`**.
+1. In the **Short description** text box, enter **`Introduction to GitHub Projects`** and select **Save**.
 1. In the **README** section, enter the following text
 
    > **Note:** The **README** section includes a simplified Markdown editor, assisting you with creating visually appealing README page for the project. You could use the toolbar icons to format the text and use the **Preview** tab to review the resulting changes. Copy and paste the following text into the README editor section:
@@ -125,12 +125,12 @@ The exercise consists of the following tasks:
    > **Note:** This layout represents a very basic Kanban board. Within each column, you can add individual items. You can also add extra columns.
 
 1. To add an extra column, select the **+** icon to the right of the **Done** column and then select **+ New Column**.
-1. In the **New option** window, in the **Label text** text box, enter **Review In Progress** and select a color you want to assign to the column. In the **Description** text box, enter **This item is being reviewed**, and then select **Save**.
+1. In the **New option** window, in the **Label text** text box, enter **`Review In Progress`** and select a color you want to assign to the column. In the **Description** text box, enter **`This item is being reviewed`**, and then select **Save**.
 1. Select the small circle next to the **Review in Progress** label of the newly added column and use it to drag it between the **In Progress** and **Done** column.
 
 ## Exercise 2: Create and manage project board items
 
-In this exercise, you will create and manage project board items
+In this exercise, you'll create and manage project board items
 
 > **Note:** There are two basic ways of adding items to a project board. You can create an item draft or add an item representing an existing issue in a GitHub repository.
 
@@ -146,11 +146,11 @@ The exercise consists of the following tasks:
 
    > **Note:** In the automatically displayed text box, you can either start typing to create a draft or type **#** to reference an existing issue in any of your GitHub repositories. We will start with the first of these two techniques.
 
-1. In the text box, enter **Missing Wiki** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the text box, enter **`Missing Wiki`** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
 1. In the newly added draft item, select the ellipsis symbol and, in the drop-down menu, select **Convert to issue**.
 1. In the **Select an item** drop-down list, select **DevOpsCoreIntroRepo** to add the item to the repo you created in the previous exercise. Note that the issue has been automatically labeled with **#2**.
 1. Select the **Missing Wiki** issue.
-1. In the **Missing Wiki #2** pane, note that you have additional configuration settings available at this point, including labels and milestones.
+1. In the **Missing Wiki #2** pane, note that you have another configuration settings available at this point, including labels and milestones.
 1. Select **Add labels** and, in the **Select items** drop-down list, select **enhancement**.
 1. Select **Add milestone** and, in the **Select an item** drop-down list, select **alpha release**.
 1. Close the **Missing Wiki #2** pane.
@@ -158,7 +158,8 @@ The exercise consists of the following tasks:
    > **Note:** Now you will add another draft item and convert it into an issue.
 
 1. On the **DevOps Core Intro Project** page, in the **Todo** column, select **+ Add item**.
-1. In the text box, enter **Additional collaborators needed** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the text box, enter **`Additional collaborators needed`** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the newly added draft item, select the ellipsis symbol and, in the drop-down menu, select **Convert to issue** and select **DevOpsCoreIntroRepo** to add the item to the repo.
 
 ### Task 2: Add an item based on an issue
 
@@ -199,7 +200,7 @@ The exercise consists of the following tasks:
 1. Note that closing the item resulted in the following actions:
 
    - The status of the item was automatically changed to **Done**, as indicated by an extra comment stating that **github-project-automation** bot moved the item from **In Progress** to **Done** in **DevOps Core Intro Project**.
-   - **alpha release** milestone has been marked as complete, as indicated by the green horizontal bar in the **Milestone** section of the page.
+   - **alpha release** milestone has been marked as 50% complete, as indicated by the green horizontal bar in the **Milestone** section of the page.
 
    > **Note:** In case you don't see the changes, refresh the page.
 
