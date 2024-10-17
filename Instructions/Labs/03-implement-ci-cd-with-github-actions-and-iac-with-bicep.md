@@ -122,15 +122,15 @@ The exercise consists of the following tasks:
 1. In the Bash session within the Cloud Shell pane, run the following command to store the value of your Azure subscription ID in a variable:
 
    ```cli
-   SUBCRIPTION_ID=$(az account show --query id --output tsv) 
-   echo $SUBCRIPTION_ID
+   SUBSCRIPTION_ID=$(az account show --query id --output tsv) 
+   echo $SUBSCRIPTION_ID
    ```
 
 1. Copy the value of the Subscription ID returned by the second command and record it. You'll need it later in this exercise.
 1. In the Bash session within the Cloud Shell pane, run the following command to create a Microsoft Entra ID service principal and assign to it the role of Contributor in the scope of the subscription:
 
    ```cli
-   az ad sp create-for-rbac --name "devopsfoundationslabsp" --role contributor --scopes /subscriptions/$SUBCRIPTION_ID --json-auth
+   az ad sp create-for-rbac --name "devopsfoundationslabsp" --role contributor --scopes /subscriptions/$SUBSCRIPTION_ID --json-auth
    ```
 
 1. Copy the entire JSON-formatted output of the command and record it. You'll need it shortly. The output should have the format that resembles the following text:
