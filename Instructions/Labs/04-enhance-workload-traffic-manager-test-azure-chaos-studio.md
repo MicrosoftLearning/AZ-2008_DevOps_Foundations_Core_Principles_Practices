@@ -61,7 +61,7 @@ The exercise consists of the following tasks:
 ### Task 1: Implement a Traffic Manager profile
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Traffic Manager profiles`** and, in the list of results, select **Traffic Manager profiles**.
-1. On the **Load Balancing Services| Traffic Manager** page, select **+ Create**.
+1. On the **Load Balancing Services \| Traffic Manager** page, select **+ Create**.
 1. On the **Create Traffic Manager profile** page, do the following actions:
 
    - In the **Name** text box, enter **`devopsfoundationstmprofile`**.
