@@ -229,6 +229,7 @@ The exercise consists of the following tasks:
     RESOURCE-GROUP: rg-eshoponweb-eastus
    ```
 
+1. In the **Edit** pane, replace the `location` variable in line 9 with the region nearest to your location. 
 1. In the **Edit** pane, replace the `eshoponweb-webapp-NAME` placeholder in line 11 with the name of the **second** Azure App Service web app you generated earlier in this exercise.
 1. In the **.github/workflows/eshoponweb-cicd.yml** pane, select **Commit changes** and then select **Commit changes** again.
 1. In the web browser window displaying the forked **eShopOnWeb** GitHub repo page, select **Actions**.

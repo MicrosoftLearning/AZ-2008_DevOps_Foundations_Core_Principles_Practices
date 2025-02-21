@@ -61,7 +61,7 @@ The exercise consists of the following tasks:
 ### Task 1: Implement a Traffic Manager profile
 
 1. In the web browser tab displaying the Azure portal, in the search text box at the top of the page, enter **`Traffic Manager profiles`** and, in the list of results, select **Traffic Manager profiles**.
-1. On the **Load balancing \| Traffic Manager** page, select **+ Create**.
+1. On the **Load Balancing Services \| Traffic Manager** page, select **+ Create**.
 1. On the **Create Traffic Manager profile** page, do the following actions:
 
    - In the **Name** text box, enter **`devopsfoundationstmprofile`**.
@@ -80,7 +80,7 @@ The exercise consists of the following tasks:
 
    > **Note:** Wait for the deployment to complete. This should complete within a minute.
 
-1. On the **Load balancing \| Traffic Manager** page, if necessary, select **Refresh** and then select **devopsfoundationstmprofile**.
+1. On the **Load Balancing Services \| Traffic Manager** page, if necessary, select **Refresh** and then select **devopsfoundationstmprofile**.
 1. On the **devopsfoundationstmprofile** page, in the **Essentials** section, copy the value of the **DNS name** setting, and record it. You'll need it throughout this lab.
 1. On the **devopsfoundationstmprofile** page, in the left navigation menu, in the **Settings** section, select **Configuration**.
 1. Review the content of the **devopsfoundationstmprofile \| Configuration** page. Note that, by default, **DNS time to live (TTL)** is set to **60** seconds. Change the value to **5** seconds.
