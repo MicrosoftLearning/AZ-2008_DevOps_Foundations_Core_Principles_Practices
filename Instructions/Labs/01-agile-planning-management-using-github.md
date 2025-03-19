@@ -69,7 +69,7 @@ The exercise consists of the following tasks:
    - In the **Due date (optional)** text box, enter the date one week ahead from the current date.
    - In the **Description** text box, enter **`Completion of the alpha release`**.
 
-1. Select **Create milestone**.
+1. Select **New milestone**.
 1. Repeat the last three steps to create an **beta release** milestone with the due date two weeks ahead of the current date. In the **Description** text box, enter **`Completion of the beta release`**.
 1. Navigate back to the **Issues** page and select **New issue**.
 1. In the **Add a title** text box, enter **`Repo README page is empty`**.
