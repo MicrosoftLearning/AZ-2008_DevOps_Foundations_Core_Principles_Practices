@@ -76,7 +76,7 @@ The exercise consists of the following tasks:
 1. In the **Add a description** text box, enter **`Brevity might be a virtue, but this README page can really use some text`**.
 1. Select the gear icon next to the **Milestone** entry and, in the drop-down list, select **alpha release**.
 1. Select the gear icon next to the **Labels** entry and, in the drop-down list, select **bug**.
-1. Select **Submit new issue**. Note that the issue has been automatically assigned **#1**.
+1. Select **Create**. Note that the issue has been automatically assigned **#1**.
 
 ### Task 3: Create a GitHub project
 
