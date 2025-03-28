@@ -69,14 +69,14 @@ The exercise consists of the following tasks:
    - In the **Due date (optional)** text box, enter the date one week ahead from the current date.
    - In the **Description** text box, enter **`Completion of the alpha release`**.
 
-1. Select **Create milestone**.
+1. Select **New milestone**.
 1. Repeat the last three steps to create an **beta release** milestone with the due date two weeks ahead of the current date. In the **Description** text box, enter **`Completion of the beta release`**.
 1. Navigate back to the **Issues** page and select **New issue**.
 1. In the **Add a title** text box, enter **`Repo README page is empty`**.
 1. In the **Add a description** text box, enter **`Brevity might be a virtue, but this README page can really use some text`**.
 1. Select the gear icon next to the **Milestone** entry and, in the drop-down list, select **alpha release**.
 1. Select the gear icon next to the **Labels** entry and, in the drop-down list, select **bug**.
-1. Select **Submit new issue**. Note that the issue has been automatically assigned **#1**.
+1. Select **Create**. Note that the issue has been automatically assigned **#1**.
 
 ### Task 3: Create a GitHub project
 
@@ -158,7 +158,7 @@ The exercise consists of the following tasks:
    > **Note:** Now you will add another draft item and convert it into an issue.
 
 1. On the **DevOps Core Intro Project** page, in the **Todo** column, select **+ Add item**.
-1. In the text box, enter **`Additional collaborators needed`** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the text box, enter **`Additional collaborators needed`** and then press **CTRL + Enter** on the keyboard. This will add a new draft item to the **Todo** column.
 1. In the newly added draft item, select the ellipsis symbol and, in the drop-down menu, select **Convert to issue** and select **DevOpsCoreIntroRepo** to add the item to the repo.
 
 ### Task 2: Add an item based on an issue
