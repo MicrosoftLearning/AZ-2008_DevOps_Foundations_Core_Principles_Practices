@@ -146,7 +146,7 @@ The exercise consists of the following tasks:
 
    > **Note:** In the automatically displayed text box, you can either start typing to create a draft or type **#** to reference an existing issue in any of your GitHub repositories. We will start with the first of these two techniques.
 
-1. In the text box, enter **`Missing Wiki`** and then press **Enter** on the keyboard. This will add a new draft item to the **Todo** column.
+1. In the text box, enter **`Missing Wiki`** and then press **Ctrl + Enter** on the keyboard. This will add a new draft item to the **Todo** column.
 1. In the newly added draft item, select the ellipsis symbol and, in the drop-down menu, select **Convert to issue**.
 1. In the **Select an item** drop-down list, select **DevOpsCoreIntroRepo** to add the item to the repo you created in the previous exercise. Note that the issue has been automatically labeled with **#2**.
 1. Select the **Missing Wiki** issue.
