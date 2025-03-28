@@ -82,7 +82,8 @@ The exercise consists of the following tasks:
 1. In the current pane, in the Assignees section, select **Add assignees…**, and, in the **Suggestions** section, select your GitHub user name.
 1. Select the gear icon next to the **Labels** entry and, in the drop-down list, select **enhancement**.
 1. Select the gear icon next to the **Projects** entry and, in the drop-down list, select **DevOps Core Intro Project**.
-1. Select **Submit new issue**.
+1. Click **Create** to save the new issue.
+1. Open the new issue again.
 1. On the **index.html looks rather austere** pane, in the **Projects** section, set **Status** to **In Progress**.
 1. On the forked **Spoon-Knife** page, select the **Projects** tab.
 1. On the **Welcome to the all-new projects** page, select **DevOps Core Intro Project**.
