@@ -1,3 +1,5 @@
+**This course will be retiring on  **2025-11-14**.**
+
 # AZ-2008: DevOps Foundations: The Core Principles and Practices
 
 ## Welcome
